@@ -1,0 +1,49 @@
+//- ================= DEFAULT =================
+//- MAIN START PATH
+-var startPath = './';
+//- Home ID
+-var dataIsHome = true;
+//- MIXINS
+include ../modules/_mixins
+
+
+
+
+//- ===========================================
+
+doctype html
+html(lang="en")
+    head
+        //- you can add start var's or change it
+        block startOpt
+        meta(charset="UTF-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no")
+        meta(http-equiv="X-UA-Compatible" content="ie=edge")
+        meta(name="author" content='author name')
+        block metas
+        block title
+            title Zense
+        block preload
+            -var mainStyle = `${startPath}css/main.min.css`;
+            link(rel='preload' href=mainStyle as="style")
+        block fav
+            link(rel="shortcut icon" href=`${startPath}img/favicon.ico` type="image/x-icon")
+        block fonts
+            // FONTS
+        block styles
+            // STYLES
+            //- CSS
+            link(rel="stylesheet" href=mainStyle)
+
+    body(data-ishome=`${dataIsHome}`)
+        block preloader
+        block content
+
+
+        block scripts
+            // SCRIPTS
+            //- JS
+            -var mainJs = `${startPath}js/main.min.js`;
+            script(src=mainJs)
+        
+        block templates

@@ -1,0 +1,118 @@
+
+//- TEMPLATE
+extends common/layouts/_layout
+
+prepend metas
+    meta(name="description" content='zense')
+    meta(name="keywords" content='some keyw')
+    //- social prev-s
+    -var socVars = {type: 'some type', title: 'some title', descr: 'some dscr', img: 'some link'}
+    +social(socVars)
+block content
+    //- PHONE
+    +phone(55555555)
+    //- HEADER
+    //- -var activeIndex = 1
+    include common/layouts/_header
+    //- MAIN CONTENT
+    // MAIN CONTENT
+    main.main#my-scrollbar
+        section.top-section
+            .top-section__bg-foto(style=`background-image: url(${startPath}/img/main/top_dscr.jpg)`)
+            .container
+                .top-section__dscr
+                    h1.title.top-section__title For hair like in your 20s in your 40s, 50s & beyond
+                    p.text.top-section__text Zense’s organic treatments encourage new hair growth and help you naturally restore your hair’s original beauty, strength, and thickness in as little as 3 weeks. Without lasers.
+                    +hover-btn('#learn-more', 'Learn more')(class='scroll-triger')
+        section.section.section--1#learn-more
+            .container
+                .section__inner-wrap
+                    .section__img-col
+                        .section__inner-lay
+                            .section__lay.parallax-lay
+                            picture.section__img.parallax-img
+                                source(srcset=`${startPath}img/main/1-sm.jpg` media="(max-width: 768px)")
+                                source(srcset=`${startPath}img/main/1.jpg`)
+                                img.section__img.parallax-img(src="img/main/1.jpg" alt="zense 1")
+                    .section__text-col
+                        h2.section__title.title Thinning hair, receding hairlines, and bald patches aren't just "a men's thing."  
+                        .section__text.text Up to 40% of women aged 40, and 80% of women aged 60 and over suffer from some form of hair loss, according to the American Academy of Dermatology and the American Hair Loss Association.   
+                        .section__text.text And while there are many treatments available to help men regrow and strengthen their hair, women’s options were limited to expensive laser therapies or harsh chemical treatments.
+                        .section__text.text Other women would cut their hair shorter, dye their hair lighter, or use volumizers to try and disguise their hair loss.  
+                        +hover-btn('#', 'Order now')
+        section.section.section--2
+            .container
+                 .section__inner-wrap
+                    .section__text-col.parallax-lay
+                        h2.section__title.title But now, you don't have to. Because you can fight it - naturally.  
+                        .section__text.text Combining ancient oriental medicinal herbs with a modern delivery system, Zense’s certified organic and vegan treatments <span>naturally encourage the growth of new, healthy hair</span>, while strengthening and rejuvenating your existing hair inside and out.   
+                        .section__text.text Stopping hair loss in its tracks and giving you stronger, thicker, more luscious hair - without lasers or harsh chemicals.
+                        +hover-btn('#', 'Order now')
+                    .section__img-col
+                        .section__inner-lay
+                            picture.section__img.parallax-img
+                                source(srcset="img/main/2-sm.jpg" media="(max-width: 768px)")
+                                source(srcset="img/main/2.jpg")
+                                img.section__img.parallax-img(src="img/main/2.jpg" alt="zense 2")
+        section.section--slider 
+            .container
+                .swiper-container
+                    .swiper-wrapper
+                        .swiper-slide
+                            .swiper-slide__dscr
+                                .swiper-slide__title.title Ginger <br> Root Extract
+                                .swiper-slide__text.text Lifting and energizing, Ginger Root increases blood circulation to hair follicles, encouraging new, natural growth, and reduces inflammation for healthier, stronger hair from root to tip.
+                            img.swiper-img(src="img/main/slider/1.jpg" alt='zense')
+                        .swiper-slide
+                            .swiper-slide__dscr
+                                .swiper-slide__title.title Grape <br> Seed Oil
+                                .swiper-slide__text.text Plentiful in Vitamin E and Lineolic Acid, Grape Seed Oil deeply nourishes and moisturizes brittle and weak hair - making it stronger, shinier, and healthier.
+                            img.swiper-img(src="img/main/slider/2.jpg" alt='zense')
+                        .swiper-slide
+                            .swiper-slide__dscr
+                                .swiper-slide__title.title Rosemary Oil
+                                .swiper-slide__text.text Aside from naturally assisting hair growth, Rosemary Oil is well-known for soothing dry, flaky, and irritated scalps while increasing circulation to prevent premature graying.
+                            img.swiper-img(src="img/main/slider/3.jpg" alt='zense')
+                        .swiper-slide
+                            .swiper-slide__dscr
+                                .swiper-slide__title.title Fleeceflower Root
+                                .swiper-slide__text.text One of Traditional Chinese Medicine’s best-kept secrets, antioxidant-rich Fleeceflower Root has been used for centuries to stop hair from prematurely graying and to restore lost hair.
+                            img.swiper-img(src="img/main/slider/4.jpg" alt='zense')
+                        .swiper-slide
+                            .swiper-slide__dscr
+                                .swiper-slide__title.title Ginseng Extract
+                                .swiper-slide__text.text Highly revitalizing, Ginseng actively promotes hair growth by stimulating the scalp and hair roots while reducing stress levels to halt further loss of existing hair.
+                            img.swiper-img(src="img/main/slider/5.jpg" alt='zense')
+                .swiper-btn__row
+                    .swiper-btn Pull left
+                        .arrow
+        section.section.section--3
+            .container
+                 .section__inner-wrap#fixed-img1
+                    .section__img-col
+                         picture.section__img.parallax-img
+                            source(srcset="img/main/3-sm.jpg" media="(max-width: 768px)")
+                            source(srcset="img/main/3.jpg")
+                            img.section__img.parallax-img(src="img/main/3.jpg" alt="zense 3")
+                    .section__text-col
+                        .section__text-header
+                            h2.section__title.title "So, how does it work?"  
+                            .section__text.text Halting female hair loss and growing beautifully strong and healthy hair is easy with Zense.
+                        .section__text-scroll-outer
+                            .section__text-scroll-inner
+                                h3.section__title.title.title--sm.accent Here's how you do it in just 3 simple steps:  
+                                .section__text.text.bold ACTIVATE Hair Growth Essence
+                                .section__text.text Pour your ACTIVATE Hair Growth Essence into your mixing bottle and add your favorite shampoo. Shake gently to mix well and massage into your hair gently every time you wash it.
+                                .section__text.text This essence soothes irritated and inflamed scalps, strengthens roots, and increases circulation to help promote new growth.
+                                .section__text.text.bold ACTIVATE Hair Growth Essence
+                                .section__text.text Pour your ACTIVATE Hair Growth Essence into your mixing bottle and add your favorite shampoo. Shake gently to mix well and massage into your hair gently every time you wash it.
+                                .section__text.text This essence soothes irritated and inflamed scalps, strengthens roots, and increases circulation to help promote new growth.
+                                .section__text.text.bold ACTIVATE Hair Growth Essence
+                                .section__text.text Pour your ACTIVATE Hair Growth Essence into your mixing bottle and add your favorite shampoo. Shake gently to mix well and massage into your hair gently every time you wash it.
+                                .section__text.text This essence soothes irritated and inflamed scalps, strengthens roots, and increases circulation to help promote new growth.
+    // MAIN CONTENT - end
+    // FOOTER
+    include common/layouts/_footer
+    // FOOTER - end
+append scripts
+    //- script(src="./js/custom/home.min.js")

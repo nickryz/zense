@@ -1,0 +1,33 @@
+.counter {
+    max-width: 189px;
+    display: inline-flex;
+    // height: 63px;
+    border: 1px solid #6F6E6E; 
+
+    .btn {
+        width: 33.3333%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        cursor: pointer;
+        transition: background 0.25s, color 0.25s;
+
+        &:active {
+            background: $accentColor;
+            color: #fff;
+        }
+    }
+    .counter-input {
+        padding: 20px;
+        display: flex;
+       text-align: center;
+        width: 33.3333%;
+        outline: none;
+        border: 0;
+        border-right: 1px solid #6F6E6E; 
+        border-left: 1px solid #6F6E6E; 
+        background: inherit;
+        font-family: $mainFont;
+    }
+}

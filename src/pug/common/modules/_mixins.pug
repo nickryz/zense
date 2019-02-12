@@ -1,0 +1,28 @@
+//- social og/twitter
+mixin social(cont)
+    meta(property="og:type" content=cont.type)
+    meta(property="og:title" content=cont.title)
+    meta(property="og:description" content=cont.descr)
+    meta(property="og:image" content=cont.image)
+    meta(property="twitter:card" content="summary")
+    meta(property="twitter:title" content=cont.title)
+    meta(property="twitter:description" content=cont.descr)
+    meta(property="twitter:image" content=cont.image)
+
+//- hover btn
+mixin hover-btn(link, text)
+    a.hover-btn(href=link)&attributes(attributes)
+        .hover-btn__inner-wrap
+            .text-link= text
+
+//- phone
+mixin phone(tel)
+    a.calling-wrap(href=`tel:${tel}` title="to call")
+        .calling
+
+//- counter
+mixin counter
+    .counter
+        .btn.decrement -
+        input.counter-input(type="text" maxlength="2")
+        .btn.increment +

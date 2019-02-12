@@ -1,0 +1,21 @@
+.accent-btn {
+    display: block;
+    margin: 0 auto;
+    background-color: $accentColor;
+    padding: 20px;
+    width: 100%;
+    max-width: 249px;
+    text-decoration: none;
+    font-family: $mainFont;
+    font-weight: 700;
+    font-size: 0.6785;
+    letter-spacing: 5%;
+    color: $lightFont;
+    transition: background 0.35s ease-in-out, color 0.35s ease-in-out;
+    text-align: center;
+
+    &:hover {
+        background-color: darken($accentColor, 10%);
+        color: darken($lightFont, 10%);
+    }
+}

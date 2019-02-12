@@ -1,0 +1,88 @@
+
+//- TEMPLATE
+
+extends ../common/layouts/_layout
+
+block startOpt
+    -startPath = '../'; 
+    -dataIsHome = false;   
+prepend metas
+    meta(name="description" content='some dscr')
+    meta(name="keywords" content='some keyw')
+    //- social prev-s
+    -var socVars = {type: 'some type', title: 'some title', descr: 'some dscr', img: 'some link'}
+    +social(socVars)
+block content
+    //- PHONE
+    +phone(55555555)
+    //- HEADER
+    //- -var activeIndex = 1
+    include ../common/layouts/_header
+    //- MAIN CONTENT
+    // MAIN CONTENT
+    main.main
+        section.main-view
+            .container
+                .main-view__inner-wrap
+                    .main-view__img-col
+                        img(src=`${startPath}img/shop/p1.jpg` alt="zense 1")  
+                    .main-view__scroll-col
+                        .main-view__scroll-col-lay
+                            .scroll-col__header
+                                h2.section__title.title Organic Hair Growth Accelerator
+                            .scroll-col__scroll-over
+                                ul.scroll-col__list
+                                    li.scroll-col__item
+                                        table.scroll-col__item-table
+                                            tr.row.row--title
+                                                th.col.col--name Buy 1 Package
+                                                th.col.col--ml ml
+                                                th.col.col--price Price
+                                            tr.row.row--main
+                                                td.col.col--name 1 Essence Per Month
+                                                td.col.col--ml 20
+                                                td.col.col--price now ONLY $35
+                                            tr.row.row--com
+                                                td.col.col--name (Plus shipping & Handing Free)
+                                                td.col.col--ml 
+                                                td.col.col--price per month
+                                        .btns-row
+                                            a.accent-btn(href="#") ORDER NOW
+                                            +counter
+                                    li.scroll-col__item
+                                        table.scroll-col__item-table
+                                            tr.row.row--title
+                                                th.col.col--name Buy 1 Package
+                                                th.col.col--ml ml
+                                                th.col.col--price Price
+                                            tr.row.row--main
+                                                td.col.col--name 1 Essence Per Month
+                                                td.col.col--ml 20
+                                                td.col.col--price now ONLY $35
+                                            tr.row.row--com
+                                                td.col.col--name (Plus shipping & Handing Free)
+                                                td.col.col--ml 
+                                                td.col.col--price per month
+                                        a.accent-btn(href="#") ORDER NOW
+                                    li.scroll-col__item
+                                        table.scroll-col__item-table
+                                            tr.row.row--title
+                                                th.col.col--name Buy 1 Package
+                                                th.col.col--ml ml
+                                                th.col.col--price Price
+                                            tr.row.row--main
+                                                td.col.col--name 1 Essence Per Month
+                                                td.col.col--ml 20
+                                                td.col.col--price now ONLY $35
+                                            tr.row.row--com
+                                                td.col.col--name (Plus shipping & Handing Free)
+                                                td.col.col--ml 
+                                                td.col.col--price per month
+                                        a.accent-btn(href="#") ORDER NOW
+
+
+
+    // MAIN CONTENT - end
+    // FOOTER
+    include ../common/layouts/_footer
+    // FOOTER - end

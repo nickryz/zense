@@ -1,0 +1,24 @@
+/* DEFAULT */
+
+@import "../libs/normalize/normalize";
+@import "../../node_modules/swiper/dist/css/swiper";
+@import "misc/_fonts.scss";
+@import "misc/_mixin.scss";
+@import "misc/_vars.scss";
+@import "misc/_defolt.scss"; 
+
+/*** LAYOUT ***/ 
+@import "layout/_header.scss"; 
+@import "layout/_top-section.scss"; 
+@import "layout/_main-sections.scss"; 
+@import "layout/_footer.scss"; 
+@import "layout/_shop.scss"; 
+
+/*** COMPONENTS ***/
+@import "layout/components/_hover-btn.scss"; 
+@import "layout/components/_phone.scss"; 
+@import "layout/components/_accent-btn.scss"; 
+@import "layout/components/_counter.scss"; 
+
+
+

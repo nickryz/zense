@@ -1,0 +1,253 @@
+// Header
+.header {
+    width: 100%;
+    padding: 76px 0 16px;
+    position: fixed;
+    z-index: 9;
+    transition: padding 0.3s, background 0.3s;
+
+    &.full {
+        padding: 10px 0;
+        background: rgba(255,255,255, 0.5);
+
+        .burger {
+            background: transparent;
+        }
+    }
+
+    @include tablet-pr {
+        padding: 38px 0;
+    }
+    
+    @include mobile-ls {
+        padding: 10px 0;
+
+        &.full {
+            padding: 0;
+        }
+	}
+}
+.header__inner {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.main-nav {
+    
+
+    @include tablet-pr {
+        position: fixed;
+        background: #000;
+        width: 100%;
+        max-width: 550px;
+        right: 0;
+        top: 0;
+        height: 100%;
+        padding: 100px 0 0;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        z-index: 8;
+        transform: translateX(100%);
+        transition: transform 0.55s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+
+        &.show {
+            transform: translateX(0%);
+        }
+
+        .menu__logo {
+            
+        }
+	}
+    
+}
+.menu__logo {
+    display: none;
+    text-decoration: none;
+    max-width: 107px;
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 50px;
+    left: 40px;
+
+    @include tablet-pr {
+        display: inline-block;
+     }
+}
+.main-nav__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+
+    @include tablet-pr {
+       flex-direction: column;
+       width: 100%;
+       height: 100%;
+       justify-content: flex-start;
+       align-items: flex-start;
+       overflow-y: auto;
+       overflow-x: hidden;
+       padding: 50px 120px;
+    }
+    
+    @include mobile-ls {
+       padding: 50px 40px;
+	}
+    @include mobile-pr {
+    //    padding: 50px 15px;
+	}
+}
+.main-nav__item {
+    margin-left: 68px;
+
+    &:last-child {
+        .main-nav__link {
+            padding-left: 17px;
+            position: relative;
+            
+            &:before {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                background: $accentColor;
+            }
+        }
+    }
+
+    @include tablet-pr {
+        margin-left: 0;
+        margin-bottom: 50px;
+     }
+}
+.main-nav__link {
+    text-decoration: none;
+    font-family: $mainFont;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    color: $darkFont;
+    transition: color 0.25s ease-in-out;
+    font-weight: 700;
+
+    &.active {
+        color: $accentColor;
+    }
+    &:hover {
+        color: $accentColor
+    }
+    @include tablet-pr {
+        color: $grayFont;
+        font-size: 2.25rem;
+    }
+}
+.header__logo {
+    display: inline-block;
+    text-decoration: none;
+    max-width: 107px;
+    width: 100%;
+    height: auto;
+}
+
+
+// BURGER
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 7;
+    width: 100%;
+    height: 100%;
+    transition: all 0.3s ease-in-out;
+    background-color: #000;
+    opacity: 0;
+    visibility: hidden;
+    cursor: pointer;
+
+    @include tablet-pr {
+        &.show {
+            opacity: 0.8;
+            visibility: visible;
+        }
+	}
+
+
+}
+.burger {
+    width: 50px;
+    height: 50px;
+    // border-radius: 4px;
+    display: none;
+    z-index: 10;
+    position: relative;
+    transition: background 0.3s;
+    background: rgba(255,255,255, 0.3);
+
+    &.clicked {
+        background: rgba(255,255,255, 0);
+
+        span {
+            background: transparent;
+    
+            &:after {
+                transform: translateY(-9px) rotate(-45deg);
+                background: #fff;
+            }
+            &:before {
+                transform: translateY(9px) rotate(45deg);
+                background: #fff;
+            }
+        }
+    }
+    
+    span {
+      width: 30px;
+      height: 3px;
+      background: #000;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-left: -15px;
+      margin-top: -1.5px;
+      transition-property: background-color, transform;
+      transition-duration: 0.3s;
+
+      &:before,
+      &:after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: #000;
+        transition-property: background-color, transform;
+        transition-duration: 0.3s;
+      }
+      &:after {
+          top: 9px;
+      }
+      &:before {
+          top: -9px;
+      }
+
+      &:hover {
+          cursor: pointer;
+      }
+
+      
+    }
+    &:hover {
+      cursor: pointer;
+    }
+
+    @include tablet-pr {
+        display: block;
+     }
+  }
