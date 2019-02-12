@@ -114,9 +114,17 @@
             display: inline-block;
 
             @include mobile-pr {
-                margin: 25px 0 0 0;
+                // margin: 25px 0 0 0;
                 padding: 10px;
                 max-width: 150px;
+            }
+        }
+
+        .counter {
+            .btn, .counter-input {
+                @include mobile-pr {
+                    padding: 10px;
+                }
             }
         }
     }

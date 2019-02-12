@@ -5,6 +5,8 @@ import animation from 'scrollmagic/scrollmagic/uncompressed/plugins/animation.gs
 import addIndicators from 'scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators'
 import ScrollMagic from 'scrollmagic/scrollmagic/uncompressed/ScrollMagic'
 import Swiper from 'swiper';
+import Counter from './misc/counter';
+import HoverImg from './misc/hoverImg';
 // import TweenLite from 'gsap/TweenLite';
 // import Scrollbar from 'smooth-scrollbar';
 
@@ -43,7 +45,7 @@ function init () {
             }
         }
     }
-
+ 
     // ==================== MOBILE MENU ====================
 
     burgerElem.addEventListener('click', mobileMenuHandler);
@@ -71,7 +73,6 @@ function onLoad() {
 
     });
 
-    console.log(isHome)
     if(isHome) {
         // scrolling section
         scenes.push(function(){
@@ -141,24 +142,24 @@ function onLoad() {
       activeScenes = [];
       // loop over each scene and add/re-add
       newScenes.forEach(function (newScene, index) {
-        if (typeof newScene === 'function') {
+        if (typeof newScene === 'function') {   
           // add the new scene
           let newS = newScene();
           // push it to our active scenes array
           activeScenes.push(newS);
         }
-      });
+      }); 
     }
 
     if(wW >= mobileLs) {
         addScenes(scenes);
-    }
-
+    } 
+  
     // ==================== UPDATES WHEN RESIZE ==================== 
     
     
     let resizeTimeout = null;
-    var timeoutDurationScrollMagic = 400;
+    var timeoutDurationScrollMagic = 400; 
 
     window.addEventListener('resize', updateOnResize.bind(this))
 
@@ -190,12 +191,12 @@ function onLoad() {
         
     }
 
-    // SWIPER
+    // ==================== SWIPER ====================
 
     if(isHome) {
         var swiper = new Swiper('.swiper-container', {
             slidesPerView: 'auto',
-            loop: true,
+            loop: true, 
             spaceBetween: 80,
             loopedSlides: 3,
             grabCursor: true,
@@ -222,7 +223,34 @@ function onLoad() {
                 }
                 }
             });
-    }        
+    }          
+
+    // ==================== COUNTER ====================
+
+    let counters = [].slice.call(document.querySelectorAll('.counter'));  
+    let activeCounters = [];  
+  
+    if(counters.length) {
+        for(let i = 0; i < counters.length; ++i) {
+            let counter = new Counter(counters[i]);
+            activeCounters.push(counter);
+        }
+    }
+
+    // ==================== HOVER IMG ====================
+
+    let hoverImgTrigerWrap = document.querySelectorAll('.scroll-col__list');
+    let activeTrigersWrap = [];
+    let targetElSelector = '.scroll-col__item';  
+    let imgContainerElSelector = '#hover-img';  
+
+  
+    if(hoverImgTrigerWrap.length) {
+        for(let i = 0; i < hoverImgTrigerWrap.length; ++i) {
+            let triger = new HoverImg(hoverImgTrigerWrap[i], targetElSelector, imgContainerElSelector);  
+            activeTrigersWrap.push(triger);
+        }
+    }
 
 }
 
@@ -242,10 +270,3 @@ function mobileMenuHandler(e) {
     body.classList.toggle('overflow');
 }
 
-
-
-
-
-
-function test() {
-}
