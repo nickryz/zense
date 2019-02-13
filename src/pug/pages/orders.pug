@@ -1,0 +1,75 @@
+
+//- TEMPLATE
+
+extends ../common/layouts/_layout
+
+block startOpt
+    -startPath = '../'; 
+    -dataIsHome = false;   
+prepend metas
+    meta(name="description" content='some dscr')
+    meta(name="keywords" content='some keyw')
+    //- social prev-s
+    -var socVars = {type: 'some type', title: 'some title', descr: 'some dscr', img: 'some link'}
+    +social(socVars)
+block content
+    //- PHONE
+    +phone(55555555)
+    //- HEADER
+    -var activeIndex = 5
+    include ../common/layouts/_header
+    //- MAIN CONTENT
+    // MAIN CONTENT
+    main.main
+        section.orders-section
+            .container
+                .orders-section__inner-wrap
+                    .orders-section__title-row
+                        h1.orders-section__title.title My orders
+                        p.orders-section__grand-total Grand total <span>$35.00</span>
+                    table.orders-section__table
+                        tr.row.row--title
+                            th.col.col--img
+                            th.col.col--product Product
+                            th.col.col--quantity Quantity
+                            th.col.col--price Price
+                            th.col.col--total Total
+                        tr.row.row--main
+                            td.col.col--img 
+                                img(src=`${startPath}/img/orders/p1.jpg` alt="p1") 
+                                a(href='#') remove
+                            td.col.col--product
+                                p.product-name Buy 1 Package
+                                p.product-subtitle 1 Essence Per Month
+                                p.product-comment (Plus Shipping & Handing Free)
+                            td.col.col--quantity 1
+                            td.col.col--price $35.00
+                            td.col.col--total $35.00
+                        tr.row.row--main
+                            td.col.col--img 
+                                img(src=`${startPath}/img/orders/p1.jpg` alt="p1") 
+                                a(href='#') remove
+                            td.col.col--product
+                                p.product-name Buy 1 Package
+                                p.product-subtitle 1 Essence Per Month
+                                p.product-comment (Plus Shipping & Handing Free)
+                            td.col.col--quantity 1
+                            td.col.col--price $35.00
+                            td.col.col--total $35.00
+                        tr.row.row--main
+                            td.col.col--img 
+                                img(src=`${startPath}/img/orders/p1.jpg` alt="p1")
+                                a(href='#') remove 
+                            td.col.col--product
+                                p.product-name Buy 1 Package
+                                p.product-subtitle 1 Essence Per Month
+                                p.product-comment (Plus Shipping & Handing Free)
+                            td.col.col--quantity 1
+                            td.col.col--price $35.00
+                            td.col.col--total $35.00
+
+
+    // MAIN CONTENT - end
+    // FOOTER
+    include ../common/layouts/_footer
+    // FOOTER - end

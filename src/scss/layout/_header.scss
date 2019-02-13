@@ -108,20 +108,45 @@
         .main-nav__link {
             padding-left: 17px;
             position: relative;
-            
-            &:before {
-                content: '';
+            display: block;
+
+            .dot {
                 position: absolute;
-                left: 0;
-                top: 50%;
-                transform: translateY(-50%);
                 width: 8px;
                 height: 8px;
-                border-radius: 50%;
+                left: 0;
+                top: 50%;
+                transform: translate(-50%, -50%);
                 background: $accentColor;
+                border-radius: 50%;
+                transition: width 0.25s, height 0.25s; 
+                transform-origin: 50% 50%;
+                line-height: 2.7;
+                font-size: 8px;
+                color: #fff;
+                text-align: center;
+                vertical-align: middle;
+
+                &.active {
+                    width: 20px;
+                    height: 20px;
+                }
+
+                @include mobile-ls {
+                    width: 12px;
+                    height: 12px;
+                    line-height: 4;
+    
+                    &.active {
+                        width: 30px;
+                        height: 30px;
+                    }
+                 }
             }
+
         }
     }
+
 
     @include tablet-pr {
         margin-left: 0;

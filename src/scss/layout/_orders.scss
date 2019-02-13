@@ -1,0 +1,125 @@
+// ORDERS
+
+.orders-section {
+    padding-top: 200px;
+
+    @include tablet-ls {
+        padding-top: 150px;
+    }
+    @include mobile-ls {
+        padding-top: 100px;
+    }
+}
+
+.orders-section__title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 64px;
+
+    @include mobile-ls {
+        margin-bottom: 30px;
+    }
+
+    .title {
+        margin-bottom: 0;
+    }
+    .orders-section__grand-total {
+        margin: 0 0 0 50px;
+        font-size:  calc(12px + (18 - 12) * ((100vw - 480px) / (1440 - 480)));
+        font-weight: 700;
+        letter-spacing: 0.05em;
+
+        span {
+            color: $accentColor;
+        }
+    }
+}
+
+// table
+
+.orders-section__table {
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+    margin-bottom: 64px;
+
+    
+    .row {
+        .col {
+            &--img,
+            &--quantity,
+            &--price  {
+                width: 20%;
+                
+                @include mobile-ls {
+                    width: 10%;
+                    text-align: center;
+                }
+            }
+            &--product  {
+                width: 30%;
+            }
+            &--total  {
+                width: 10%;
+            }
+        }
+    
+        &--title {
+            border-top: 1px solid $tableColor;
+            border-bottom: 1px solid $tableColor;
+            font-size: calc(8px + (11 - 8) * ((100vw - 480px) / (1440 - 480)));
+            
+            .col {
+                font-weight: 400;
+                padding: 28px 15px 28px 0;
+            }
+        }
+    
+        &--main {
+            .col {
+                padding: 49px 15px 44px 0;
+                border-bottom: 1px solid $tableColor;
+                font-size: calc(12px + (18 - 12) * ((100vw - 480px) / (1440 - 480)));
+                font-weight: 700;
+
+                @include mobile-ls {
+                    padding: 20px 5px 20px 0;
+                }
+
+                &--img {
+                    text-align: center;
+                    min-width: 106px;
+
+                    a {
+                        text-decoration: none;
+                        color: $accentColor;
+                        margin-top: 10px;
+                        display: inline-block;
+                        font-size: 0.5rem;
+                    }
+
+                    img {
+                        display: block;
+                        margin: 0 auto;
+                        width: 100%;
+                        height: auto;
+                        max-width: 106px;
+                    }
+                }
+
+                .product-name {
+                    margin: 0 0 52px;
+
+                    @include mobile-ls {
+                        margin: 0 0 20px;
+                    }
+                }
+                .product-subtitle {
+                    margin: 0 0 20px;
+                }
+            }
+        }
+    }
+
+}

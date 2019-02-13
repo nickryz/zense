@@ -6,6 +6,11 @@ html, body {
     width: 100%;
     margin: 0;
     height: 100%;
+    // overflow-x: hidden;
+}
+
+html {
+    overflow-x: hidden;
 }
 
 body {
@@ -64,8 +69,8 @@ body {
 }
 .text {
     font-family: $mainFont;
-    font-size: 0.875rem;
-    // font-size: calc(12px + (14 - 12) * ((100vw - 480px) / (1440 - 480)));
+    // font-size: 0.875rem;
+    font-size: calc(12px + (14 - 12) * ((100vw - 480px) / (1440 - 480)));
     letter-spacing: 0.05em;
     font-weight: 400;
     line-height: 24px;
@@ -93,5 +98,26 @@ body {
 .bold {
     font-weight: 700;
     color: $darkFont;
+}
+
+// table font styles
+
+.product-name {
+    letter-spacing: .05em;
+    font-size: calc(12px + (18 - 12) * ((100vw - 480px) / (1440 - 480)));
+    color: $accentColor2;
+    font-weight: 700;
+    // display: block;
+}
+.product-subtitle {
+    letter-spacing: .05em;
+    font-size: calc(10px + (13 - 10) * ((100vw - 480px) / (1440 - 480)));
+    font-weight: 700;
+    // display: block;
+}
+.product-comment {
+    font-weight: 400;
+    font-size: calc(8px + (11 - 8) * ((100vw - 480px) / (1440 - 480)));
+    letter-spacing: .05em;
 }
 

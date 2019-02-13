@@ -10,12 +10,14 @@ header.header#main-header
                 a.menu__logo(href=`${startPath}`)
                     img(src=`${startPath}img/logo-white.svg`)
                 ul.main-nav__list
-                    -var navList = {Shop: `${startPath}pages/shop`, About: `${startPath}pages/about`, Reviews: `${startPath}/reviews`, Contact: `${startPath}pages/contact`, 'My orders': `${startPath}pages/myorders`}
-                    -var i = 0
+                    -var navList = {Shop: `${startPath}pages/shop`, About: `${startPath}pages/about`, Reviews: `${startPath}/reviews`, Contact: `${startPath}pages/contact`, 'My orders': `${startPath}pages/orders`}
+                    -var i = 0;
                     each link, index in navList
                        -i++
                        li.main-nav__item
                            a.main-nav__link(href=`${link}.html` class=(i == activeIndex) ? 'active' : '')= index
+                                if index == 'My orders'
+                                    .dot
             .overlay#overlay
 
 // HEADER - end

@@ -196,6 +196,9 @@ function onLoad() {
     if(isHome) {
         var swiper = new Swiper('.swiper-container', {
             slidesPerView: 'auto',
+            watchSlidesVisibility: true,
+            preloadImages: false,
+            lazy: true, 
             loop: true, 
             spaceBetween: 80,
             loopedSlides: 3,
