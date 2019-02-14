@@ -18,4 +18,15 @@
         background-color: darken($accentColor, 10%);
         color: darken($lightFont, 10%);
     }
+
+    &.simple {
+        background: #fff;
+        color: $darkFont;
+        border: 1px solid #8E9192;
+
+        &:hover {
+            background: darken(#fff, 10%);
+            // color: lighten($darkFont, 10%);
+        }
+    }
 }

@@ -10,10 +10,12 @@ html, body {
 }
 
 html {
-    overflow-x: hidden;
+    // overflow-x: hidden;
 }
 
 body {
+    // overflow: hidden;
+
     padding: 0;
     height: 100%;
     position: relative;
@@ -26,6 +28,18 @@ body {
         overflow: hidden;
         // transition: padding 0.1s;
     }
+}
+#view {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+}
+
+#wrap {
+    position: relative;
+    z-index: 10;  
+    top: 0;
+    left: 0;
 }
 
 .main {

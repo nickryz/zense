@@ -39,15 +39,15 @@ block content
                         .section__text.text Up to 40% of women aged 40, and 80% of women aged 60 and over suffer from some form of hair loss, according to the American Academy of Dermatology and the American Hair Loss Association.   
                         .section__text.text And while there are many treatments available to help men regrow and strengthen their hair, women’s options were limited to expensive laser therapies or harsh chemical treatments.
                         .section__text.text Other women would cut their hair shorter, dye their hair lighter, or use volumizers to try and disguise their hair loss.  
-                        +hover-btn('#', 'Order now')
+                        +hover-btn(`${startPath}/pages/shop.html`, 'Order now')
         section.section.section--2
             .container
-                 .section__inner-wrap
+                .section__inner-wrap
                     .section__text-col.parallax-lay
                         h2.section__title.title But now, you don't have to. Because you can fight it - naturally.  
                         .section__text.text Combining ancient oriental medicinal herbs with a modern delivery system, Zense’s certified organic and vegan treatments <span>naturally encourage the growth of new, healthy hair</span>, while strengthening and rejuvenating your existing hair inside and out.   
                         .section__text.text Stopping hair loss in its tracks and giving you stronger, thicker, more luscious hair - without lasers or harsh chemicals.
-                        +hover-btn('#', 'Order now')
+                        +hover-btn(`${startPath}/pages/shop.html`, 'Order now')
                     .section__img-col
                         .section__inner-lay
                             picture.section__img.parallax-img
@@ -93,9 +93,9 @@ block content
                         .arrow
         section.section.section--3
             .container
-                 .section__inner-wrap#fixed-img1
+                .section__inner-wrap#fixed-img1
                     .section__img-col
-                         picture.section__img.parallax-img
+                        picture.section__img.parallax-img
                             source(srcset="img/main/3-sm.jpg" media="(max-width: 768px)")
                             source(srcset="img/main/3.jpg")
                             img.section__img.parallax-img(src="img/main/3.jpg" alt="zense 3")
@@ -106,15 +106,20 @@ block content
                         .section__text-scroll-outer
                             .section__text-scroll-inner
                                 h3.section__title.title.title--sm.accent Here's how you do it in just 3 simple steps:  
-                                .section__text.text.bold ACTIVATE Hair Growth Essence
+                                .section__text.text.bold 1. ACTIVATE Hair Growth Essence
                                 .section__text.text Pour your ACTIVATE Hair Growth Essence into your mixing bottle and add your favorite shampoo. Shake gently to mix well and massage into your hair gently every time you wash it.
                                 .section__text.text This essence soothes irritated and inflamed scalps, strengthens roots, and increases circulation to help promote new growth.
-                                .section__text.text.bold ACTIVATE Hair Growth Essence
-                                .section__text.text Pour your ACTIVATE Hair Growth Essence into your mixing bottle and add your favorite shampoo. Shake gently to mix well and massage into your hair gently every time you wash it.
-                                .section__text.text This essence soothes irritated and inflamed scalps, strengthens roots, and increases circulation to help promote new growth.
-                                .section__text.text.bold ACTIVATE Hair Growth Essence
-                                .section__text.text Pour your ACTIVATE Hair Growth Essence into your mixing bottle and add your favorite shampoo. Shake gently to mix well and massage into your hair gently every time you wash it.
-                                .section__text.text This essence soothes irritated and inflamed scalps, strengthens roots, and increases circulation to help promote new growth.
+                                .section__text.text.bold 2. AMPLIFY Scalp Nourishing Serum
+                                .section__text.text After gently towel-drying your hair, use the dropper from your AMPLIFY Scalp Nourishing Serum to disperse 10-20 drops along your hairline, your natural part, and thinning or balding patches. Then, work it into your hair roots gently with your fingertips.
+                                .section__text.text Your AMPLIFY Scalp Nourishing Serum works for a full 24 hours - stimulating your roots and follicles while nourishing them deeply for added strength and shine.
+                                .section__text.text For advanced results, use in combination with your AMPLIFY+ Scalp Conditioning SPA.
+                                .section__text.text.bold 3. AMPLIFY+ Scalp Conditioning SPA
+                                .section__text.text Using the dropper from your AMPLIFY Scalp Nourishing Serum, place 10-20 drops in the reservoir of your AMPLIFY+ Scalp Conditioning SPA comb and press the “Start” button. Comb your entire head softly for a few minutes until all serum has been dispersed.
+                                .section__text.text The combination of delicate infrared light and soothing vibrations encourages healthy cell and hair regeneration - for stronger, more luscious hair.
+                                .section__text.text.bold And for even better results, both inside and out, combine your above hair treatment with Zense’s NOURISH Advanced Hair Growth Formula.
+                                .section__text.text.bold Just taking 2 of the antioxidant and vitamin-packed capsules once a day will help replenish the minerals your body needs to help grow strong and healthy hair.
+                                .section__text.title.title--sm.accent By following these simple steps, in just 3 weeks you'll be amazed at the difference in your hair's thickness, shine, and volume.
+
     // MAIN CONTENT - end
     // FOOTER
     include common/layouts/_footer

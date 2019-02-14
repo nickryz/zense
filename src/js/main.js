@@ -1,12 +1,14 @@
 import TimelineLite from 'gsap/TimelineLite'
 import ScrollToPlugin from 'gsap/ScrollToPlugin'
 import EasePack from 'gsap/EasePack'
+import IScroll from 'iscroll/build/iscroll-probe';
 import animation from 'scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap'
 import addIndicators from 'scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators'
 import ScrollMagic from 'scrollmagic/scrollmagic/uncompressed/ScrollMagic'
 import Swiper from 'swiper';
 import Counter from './misc/counter';
 import HoverImg from './misc/hoverImg';
+// import './misc/isMobile';
 // import TweenLite from 'gsap/TweenLite';
 // import Scrollbar from 'smooth-scrollbar';
 
@@ -19,14 +21,14 @@ let body = document.body;
 let wW = window.innerWidth;
 let wH = window.innerHeight;
 let isHome = (body.getAttribute('data-ishome') == 'true') ? true : false;
+// let isMobile = isMobile();
 
 window.addEventListener('DOMContentLoaded', init);
 window.addEventListener('load', onLoad);
 
 
-
 function init () {
-    
+   
     
     if(isHome) {
 
@@ -55,10 +57,27 @@ function init () {
 
 function onLoad() {
     // ==================== SCROLL MAGIC ====================
-    
-    var controller = new ScrollMagic.Controller();
+    var controller = new ScrollMagic.Controller({
+        refreshInterval: 5
+    });
     var scenes = [];
     var activeScenes = [];
+
+    // // smooth scroll
+    // scenes.push(function(){
+    //     let wrap = document.getElementById('wrap');
+    //     let view = document.getElementById('view');
+    //     let h = wrap.scrollHeight;
+    //     body.style.height = h + 'px';
+    //     return new ScrollMagic.Scene({
+    //         duration: body.scrollHeight 
+    //     })
+    //     .on("progress", function (event) {
+    //         TweenLite.to(wrap, 1, {y:-h * event.progress});
+    //     })
+    //     .addTo(controller);
+
+    // });
 
     // fixed menu
     scenes.push(function(){
@@ -232,7 +251,7 @@ function onLoad() {
 
     let counters = [].slice.call(document.querySelectorAll('.counter'));  
     let activeCounters = [];  
-  
+    console.log(counters)
     if(counters.length) {
         for(let i = 0; i < counters.length; ++i) {
             let counter = new Counter(counters[i]);
