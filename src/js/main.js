@@ -8,6 +8,7 @@ import ScrollMagic from 'scrollmagic/scrollmagic/uncompressed/ScrollMagic'
 import Swiper from 'swiper';
 import Counter from './misc/counter';
 import HoverImg from './misc/hoverImg';
+import ContactForm from './misc/contactform'
 // import './misc/isMobile';
 // import TweenLite from 'gsap/TweenLite';
 // import Scrollbar from 'smooth-scrollbar';
@@ -122,7 +123,7 @@ function onLoad() {
         });
 
         // scene 2 (parallax)
-        scenes.push(function(){
+        scenes.push(function(){ 
             if(wW < mobileLs) return;
             let section1 = document.querySelector('.section--1')
             let paralaxTween1 = new TimelineLite()
@@ -194,7 +195,7 @@ function onLoad() {
             // loop over each active scene
             activeScenes.forEach(function (scene) {
               // make sure scene wasn't null
-              if (scene) {
+              if (scene) { 
                 // destroy active scene
                 scene.destroy(true);
               }
@@ -228,13 +229,13 @@ function onLoad() {
             breakpoints: {
                 1199: {
                     spaceBetween: 40,
-                    centeredSlides: true,
+                    centeredSlides: true,  
                 },
                 992: {
                     centeredSlides: true,
                     slidesPerGroup: 1,
-                    spaceBetween: 20
-                },
+                    spaceBetween: 20  
+                },    
                 576: {
                     centeredSlides: true,
                     spaceBetween: 20
@@ -244,27 +245,26 @@ function onLoad() {
                     spaceBetween: 0
                 }
                 }
-            });
-    }          
+            }); 
+    }            
 
     // ==================== COUNTER ====================
 
     let counters = [].slice.call(document.querySelectorAll('.counter'));  
     let activeCounters = [];  
-    console.log(counters)
-    if(counters.length) {
+    if(counters.length) { 
         for(let i = 0; i < counters.length; ++i) {
-            let counter = new Counter(counters[i]);
-            activeCounters.push(counter);
+            let counter = new Counter(counters[i]);   
+            activeCounters.push(counter);   
         }
-    }
-
+    } 
+  
     // ==================== HOVER IMG ====================
 
     let hoverImgTrigerWrap = document.querySelectorAll('.scroll-col__list');
     let activeTrigersWrap = [];
     let targetElSelector = '.scroll-col__item';  
-    let imgContainerElSelector = '#hover-img';  
+    let imgContainerElSelector = '#hover-img';      
 
   
     if(hoverImgTrigerWrap.length) {
@@ -272,6 +272,16 @@ function onLoad() {
             let triger = new HoverImg(hoverImgTrigerWrap[i], targetElSelector, imgContainerElSelector);  
             activeTrigersWrap.push(triger);
         }
+    } 
+ 
+    // ==================== CONTACT FORM ====================
+
+    if(document.querySelector('#contact-form')) {
+    
+        const form1 = new ContactForm({
+            formSellector: '#contact-form',
+            formListSellector: '.contact__input',
+        })
     }
 
 }

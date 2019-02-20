@@ -1,0 +1,23 @@
+// ABOUT
+
+.about-section {
+    padding: 50px 0;
+
+    &:first-child {
+        padding-top: 200px;
+        padding-bottom: 50px;
+        
+        @include mobile-ls {
+            padding: 100px 0;
+         }
+    }
+
+    &--accent {
+        background: $accentColor3;
+    }
+
+    .title:not(:first-child) {
+        margin-top: 55px;
+    }
+
+}

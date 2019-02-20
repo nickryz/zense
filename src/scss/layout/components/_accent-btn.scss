@@ -13,6 +13,8 @@
     color: $lightFont;
     transition: background 0.35s ease-in-out, color 0.35s ease-in-out;
     text-align: center;
+    border: none;
+    cursor: pointer;
 
     &:hover {
         background-color: darken($accentColor, 10%);

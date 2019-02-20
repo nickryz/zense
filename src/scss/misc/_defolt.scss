@@ -6,7 +6,7 @@ html, body {
     width: 100%;
     margin: 0;
     height: 100%;
-    // overflow-x: hidden;
+    // overflow: hidden;
 }
 
 html {
@@ -29,17 +29,19 @@ body {
         // transition: padding 0.1s;
     }
 }
-#view {
-    height: 100%;
-    width: 100%;
-    position: fixed;
-}
 
 #wrap {
     position: relative;
     z-index: 10;  
     top: 0;
     left: 0;
+    width: 100%;
+    height: 100%;
+    touch-action: none;
+}
+
+#wrap-inner {
+    position: relative;
 }
 
 .main {
@@ -135,3 +137,23 @@ body {
     letter-spacing: .05em;
 }
 
+.service-message {
+    // display: flex;
+    position: fixed;
+    transform: translateY(-100%);
+    top: 0;
+    left: 0;
+    padding: 20px 0;
+    width: 100%;
+    color: $accentColor2;
+    font-weight: 700;
+    max-width: 100vw;
+    text-align: center;
+    z-index: 555;
+    background: $accentColor3;
+    transition: transform 1s;
+
+    &.show {
+        transform: translateY(0);
+    }
+}

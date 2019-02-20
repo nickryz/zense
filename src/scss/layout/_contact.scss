@@ -1,0 +1,86 @@
+// CONTACT
+
+.contact-section {
+    padding-top: 200px;
+    min-height: 100vh;
+
+    @include mobile-ls {
+        padding-top: 100px;
+        padding-bottom: 50px
+     }
+}
+
+.contact__inner {
+    display: flex;
+
+    @include mobile-ls {
+       flex-direction: column;
+    }
+}
+.contact__text-col {
+    width: 59%;
+
+    @include mobile-ls {
+        width: 100%;
+     }
+}
+    .contact__dscr-group {
+        margin-bottom: 86px;
+
+        @include mobile-ls {
+            margin-bottom: 40px;
+         }
+    }
+.contact__form-col {
+    width: 41%;
+    text-align: left;
+
+    @include mobile-ls {
+        width: 100%;
+     }
+}
+    .contact__form {
+        max-width: 500px;
+        width: 100%;
+        display: inline-block;
+        text-align: left;
+
+        .accent-btn {
+            margin: 56px 0 0;
+        }
+    }
+        .input__row {
+            margin: 5px 0 28px;
+
+            @include mobile-ls {
+                margin: 5px 0 14px;
+            }
+        }
+            .contact__input-label {
+                font-size: 0.6875rem;
+                font-weight: 700;
+            }
+            .contact__input {
+                display: block;
+                width: 100%;
+                padding: 15px;
+                border: 1px solid gray;
+                outline: none;
+            }
+            textarea.contact__input {
+                min-height: 52px;
+                max-height: 300px;
+                resize: vertical;
+            }
+
+.contact__text-col {
+    padding-right: 135px;
+
+    @include tablet-pr {
+        padding-right: 85px;
+    }
+
+    @include mobile-pr {
+        padding-right: 0;
+    }
+}

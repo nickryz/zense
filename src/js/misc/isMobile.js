@@ -1,4 +1,4 @@
-export const isMobile = () => {
+export default function isMobile() {
     const vendor = navigator.userAgent || navigator.vendor || window.opera;
   
     return !!(

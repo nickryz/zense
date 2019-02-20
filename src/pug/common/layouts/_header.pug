@@ -10,7 +10,7 @@ header.header#main-header
                 a.menu__logo(href=`${startPath}`)
                     img(src=`${startPath}img/logo-white.svg`)
                 ul.main-nav__list
-                    -var navList = {Shop: `${startPath}pages/shop`, About: `${startPath}pages/about`, Reviews: `${startPath}/reviews`, Contact: `${startPath}pages/contact`, 'My orders': `${startPath}pages/orders`}
+                    -var navList = {Shop: `${startPath}pages/shop`, About: `${startPath}pages/about`, Contact: `${startPath}pages/contact`, 'My orders': `${startPath}pages/orders`}
                     -var i = 0;
                     each link, index in navList
                        -i++

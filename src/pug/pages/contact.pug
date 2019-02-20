@@ -1,0 +1,57 @@
+
+//- TEMPLATE
+
+extends ../common/layouts/_layout
+
+block startOpt
+    -startPath = '../'; 
+    -dataIsHome = false;   
+prepend metas
+    meta(name="description" content='some dscr')
+    meta(name="keywords" content='some keyw')
+    //- social prev-s
+    -var socVars = {type: 'some type', title: 'some title', descr: 'some dscr', img: 'some link'}
+    +social(socVars)
+block content
+    //- PHONE
+    +phone(55555555)
+    //- HEADER
+    -var activeIndex = 3
+    include ../common/layouts/_header
+    //- MAIN CONTENT
+    // MAIN CONTENT
+    main.main
+        //- .service-message Yep
+        .contact-section
+            .container
+                .contact__inner
+                    .contact__text-col
+                        .contact__dscr-group
+                            h2.title Contact
+                            .text Thank you for your interest in ZENSE.
+                            .text We make our best efforts to respond to e-mails within 48 hours (excluding weekends and holidays).
+                        .contact__dscr-group
+                            h2.title Order enquiries
+                            .text.bold support@thezense.com 
+                            .text You can use the form for general enquiries
+                    .contact__form-col
+                        form.contact__form#contact-form
+                            .input__row
+                                label.contact__input-label(for="#inputname") Name
+                                input.contact__input#inputname(type='text' name='name' data-validate="true")
+                            .input__row
+                                label.contact__input-label(for="#inputphone") Phone
+                                input.contact__input(type='tel' name='phone' data-validate="true") 
+                            .input__row
+                                label.contact__input-label(for="#inputmail") E-mail
+                                input.contact__input(type='email' name='e-mail' data-validate="true")
+                            .input__row
+                                label.contact__input-label(for="#inputmaessge") Message
+                                textarea.contact__input(name='message')
+                            button.accent-btn(href="#" type="submit") SEND
+
+
+    // MAIN CONTENT - end
+    // FOOTER
+    include ../common/layouts/_footer
+    // FOOTER - end
