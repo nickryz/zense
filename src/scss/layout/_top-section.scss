@@ -23,7 +23,7 @@
     top: 0;
     left: calc(50% - 80px);
     // z-index: -1;
-    background-position-x: calc(50% - 8vw);
+    background-position-x: 50%;
     background-size: cover;
     background-repeat: no-repeat;
 
@@ -36,12 +36,20 @@
 
 
 .top-section__dscr {
-    max-width: 591px;
-    margin-left: 235px;
+    // max-width: 560px;
+    width: 35%;
+    // margin-left: 50px;
 
-    @include tablet-ls {
-        margin: 0 0;
-        // text-align: center; 
+    // @include tablet-ls {
+    //     margin: 0 0;
+    //     // text-align: center; 
+    // }
+    // @include tablet-pr {
+    //     max-width: 400px;
+    // }
+    @include mobile-ls {
+        width: 100%;
+        // max-width: none;
     }
     
     @include mobile-ls {

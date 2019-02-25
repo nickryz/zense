@@ -188,6 +188,9 @@ $columnPadding: 136px;
     @include tablet-ls {
         margin-top: 120px;
      }
+    @include mobile-pr {
+        margin-top: 64px;
+     }
 
     .container {
         position: relative;

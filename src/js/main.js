@@ -9,6 +9,7 @@ import Swiper from 'swiper';
 import Counter from './misc/counter';
 import HoverImg from './misc/hoverImg';
 import ContactForm from './misc/contactform'
+import Tingle from 'tingle.js'
 // import './misc/isMobile';
 // import TweenLite from 'gsap/TweenLite';
 // import Scrollbar from 'smooth-scrollbar';
@@ -29,7 +30,8 @@ window.addEventListener('load', onLoad);
 
 
 function init () {
-   
+
+    
     
     if(isHome) {
 
@@ -63,22 +65,6 @@ function onLoad() {
     });
     var scenes = [];
     var activeScenes = [];
-
-    // // smooth scroll
-    // scenes.push(function(){
-    //     let wrap = document.getElementById('wrap');
-    //     let view = document.getElementById('view');
-    //     let h = wrap.scrollHeight;
-    //     body.style.height = h + 'px';
-    //     return new ScrollMagic.Scene({
-    //         duration: body.scrollHeight 
-    //     })
-    //     .on("progress", function (event) {
-    //         TweenLite.to(wrap, 1, {y:-h * event.progress});
-    //     })
-    //     .addTo(controller);
-
-    // });
 
     // fixed menu
     scenes.push(function(){
@@ -171,9 +157,9 @@ function onLoad() {
       }); 
     }
 
-    if(wW >= mobileLs) {
-        addScenes(scenes);
-    } 
+    // if(wW >= mobileLs) {
+    addScenes(scenes);
+    // } 
   
     // ==================== UPDATES WHEN RESIZE ==================== 
     
@@ -261,18 +247,18 @@ function onLoad() {
   
     // ==================== HOVER IMG ====================
 
-    let hoverImgTrigerWrap = document.querySelectorAll('.scroll-col__list');
-    let activeTrigersWrap = [];
-    let targetElSelector = '.scroll-col__item';  
-    let imgContainerElSelector = '#hover-img';      
+    // let hoverImgTrigerWrap = document.querySelectorAll('.scroll-col__list');
+    // let activeTrigersWrap = [];
+    // let targetElSelector = '.scroll-col__item';  
+    // let imgContainerElSelector = '#hover-img';      
 
   
-    if(hoverImgTrigerWrap.length) {
-        for(let i = 0; i < hoverImgTrigerWrap.length; ++i) {
-            let triger = new HoverImg(hoverImgTrigerWrap[i], targetElSelector, imgContainerElSelector);  
-            activeTrigersWrap.push(triger);
-        }
-    } 
+    // if(hoverImgTrigerWrap.length) {
+    //     for(let i = 0; i < hoverImgTrigerWrap.length; ++i) {
+    //         let triger = new HoverImg(hoverImgTrigerWrap[i], targetElSelector, imgContainerElSelector);  
+    //         activeTrigersWrap.push(triger);
+    //     }
+    // } 
  
     // ==================== CONTACT FORM ====================
 
@@ -283,6 +269,60 @@ function onLoad() {
             formListSellector: '.contact__input',
         })
     }
+
+
+    
+
+    let modalInfoTrigers = [].slice.call(document.querySelectorAll('.table__dscr-col'));
+
+    if(modalInfoTrigers.length) {
+        
+
+        // ==================== POPUPs VIDEO ====================
+        var modal = new Tingle.modal({
+            closeMethods: ['overlay', 'button'],
+            closeLabel: "Close",
+            cssClass: ['modal-frame'],
+            onOpen: function() {
+            },
+            onClose: function() {
+                modal.setContent('')
+            }
+        });
+
+        function setVideo(template, target) {
+            let contentHTML = template.cloneNode(true);
+            let iframeSrc = contentHTML.querySelector('iframe');
+            let link = target.getAttribute('data-video-src');
+            if(link) {
+                iframeSrc.src = link;
+                modal.setContent(contentHTML);
+            }
+        }
+
+        // ==================== POPUPs VIDEO /end ====================
+
+
+        for(let i = 0; i < modalInfoTrigers.length; ++i) {
+            modalInfoTrigers[i].addEventListener('click', function(e){
+                let target = e.target;
+
+                if(target.classList.contains('modal-triger')) {
+                    let videoContainer = document.getElementById('video-content');
+                    setVideo(videoContainer.content, target);
+                    modal.open();
+                } else if (target.classList.contains('info-triger')) {
+                    let infoW = e.currentTarget.querySelector('.info-dscr');
+                    infoW.classList.add('opened');
+                } else if (target.classList.contains('info-dscr__close')) {
+                    let infoW = e.currentTarget.querySelector('.info-dscr');
+                    infoW.classList.remove('opened');
+                }
+            })
+        }
+    }
+
+ 
 
 }
 

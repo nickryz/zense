@@ -1,0 +1,39 @@
+// MODAL
+
+.modal-frame {
+    transition: opacity 0.25s;
+    display: flex;
+    // text-justify: 
+    .tingle-modal-box {
+        width: 80%;
+        // min-width: 380px;
+        background: rgba($color: #000000, $alpha: 0.3);
+
+        @include tablet-pr {
+            width: 98%;
+            margin: auto;
+         }
+    }
+    .tingle-modal-box__content {
+        padding: 0;
+        overflow-y: auto;
+    }
+
+    .tingle-modal__close {
+        outline: none;
+        background: transparent;
+    }
+
+    .tingle-modal__closeLabel {
+        display: none;
+    }
+}
+
+.video-container__outer {
+    width: 100%;
+}
+
+.video-container__outer {
+    position: relative;
+    padding-bottom: 56.25%;
+}

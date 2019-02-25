@@ -2,6 +2,7 @@
 
 @import "../libs/normalize/normalize";
 @import "../../node_modules/swiper/dist/css/swiper";
+@import "../../node_modules/tingle.js/dist/tingle";
 @import "misc/_fonts.scss";
 @import "misc/_mixin.scss";
 @import "misc/_vars.scss";
@@ -22,6 +23,7 @@
 @import "layout/components/_phone.scss"; 
 @import "layout/components/_accent-btn.scss"; 
 @import "layout/components/_counter.scss"; 
+@import "layout/components/_modal-custom.scss"; 
 
 
 

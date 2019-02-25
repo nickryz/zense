@@ -40,15 +40,15 @@ $mq-mobile-pr				: 576px !default;
 }
 
 @mixin container {
-	max-width: 1920px;
+	max-width: 1440px;
 	width: 100%;
 	margin: 0 auto;
 	padding: 0 120px;	
 	position: relative;
 
-	@include laptop {
-		max-width: 1440px; 
-	}
+	// @include laptop {
+	// 	max-width: 1440px; 
+	// }
 	@include tablet-ls {
 		max-width: 997px; 
 		padding: 0 40px;

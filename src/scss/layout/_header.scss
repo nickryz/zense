@@ -1,13 +1,15 @@
 // Header
 .header {
     width: 100%;
-    padding: 76px 0 16px;
+    padding: 76px 0 10px;
     position: fixed;
     z-index: 9;
-    transition: padding 0.3s, background 0.3s;
+    transition: transform 0.35s, background 0.35s;
+    // will-change: transform;
 
     &.full {
-        padding: 10px 0;
+        transform: translateY(-60%) translateZ(0);
+        // padding: 10px 0;
         background: rgba(255,255,255, 0.9);
 
         .burger {

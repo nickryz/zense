@@ -18,7 +18,7 @@ block content
     // MAIN CONTENT
     main.main#my-scrollbar
         section.top-section
-            .top-section__bg-foto(style=`background-image: url(${startPath}/img/main/top_dscr.jpg)`)
+            .top-section__bg-foto(style=`background-image: url(${startPath}img/main/top_dscr_min.jpg)`)
             .container
                 .top-section__dscr
                     h1.title.top-section__title For hair like in your 20s in your 40s, 50s & beyond
@@ -39,7 +39,7 @@ block content
                         .section__text.text Up to 40% of women aged 40, and 80% of women aged 60 and over suffer from some form of hair loss, according to the American Academy of Dermatology and the American Hair Loss Association.   
                         .section__text.text And while there are many treatments available to help men regrow and strengthen their hair, women’s options were limited to expensive laser therapies or harsh chemical treatments.
                         .section__text.text Other women would cut their hair shorter, dye their hair lighter, or use volumizers to try and disguise their hair loss.  
-                        +hover-btn(`${startPath}/pages/shop.html`, 'Order now')
+                        +hover-btn(`${startPath}pages/shop.html`, 'Order now')
         section.section.section--2
             .container
                 .section__inner-wrap
@@ -47,14 +47,14 @@ block content
                         h2.section__title.title But now, you don't have to. Because you can fight it - naturally.  
                         .section__text.text Combining ancient oriental medicinal herbs with a modern delivery system, Zense’s certified organic and vegan treatments <span>naturally encourage the growth of new, healthy hair</span>, while strengthening and rejuvenating your existing hair inside and out.   
                         .section__text.text Stopping hair loss in its tracks and giving you stronger, thicker, more luscious hair - without lasers or harsh chemicals.
-                        +hover-btn(`${startPath}/pages/shop.html`, 'Order now')
+                        +hover-btn(`${startPath}pages/shop.html`, 'Order now')
                     .section__img-col
                         .section__inner-lay
                             picture.section__img.parallax-img
                                 source(srcset="img/main/2-sm.jpg" media="(max-width: 768px)")
                                 source(srcset="img/main/2.jpg")
                                 img.section__img.parallax-img(src="img/main/2.jpg" alt="zense 2")
-        section.section--slider 
+        section.section.section--slider 
             .container
                 .swiper-container
                     .swiper-wrapper
