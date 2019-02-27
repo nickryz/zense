@@ -22,7 +22,7 @@
     <!-- STYLES-->
     <link rel="stylesheet" href="../css/main.min.css">
   </head>
-  <body data-ishome="false"><a class="calling-wrap" href="tel:55555555" title="to call">
+  <body data-pageid="orders"><a class="calling-wrap" href="tel:55555555" title="to call">
       <div class="calling"></div></a>
     <!-- HEADER-->
     <header class="header" id="main-header">
@@ -35,7 +35,7 @@
               <li class="main-nav__item"><a class="main-nav__link" href="../pages/about.html">About</a></li>
               <li class="main-nav__item"><a class="main-nav__link" href="../pages/contact.html">Contact</a></li>
               <li class="main-nav__item"><a class="main-nav__link active" href="../pages/orders.html">My orders
-                  <div class="dot"></div></a></li>
+                  <div class="dot" id="dot"></div></a></li>
             </ul>
           </nav>
           <div class="overlay" id="overlay"></div>
@@ -50,9 +50,9 @@
           <div class="orders-section__inner-wrap">
             <div class="orders-section__title-row">
               <h1 class="orders-section__title title">My orders</h1>
-              <p class="orders-section__grand-total">Grand total <span>$35.00</span></p>
+              <p class="orders-section__grand-total">Grand total <span id="full-price">0</span></p>
             </div>
-            <table class="orders-section__table">
+            <table class="orders-section__table" id="items-list">
               <tr class="row row--title">
                 <th class="col col--img"></th>
                 <th class="col col--product">Product</th>
@@ -60,42 +60,9 @@
                 <th class="col col--price">Price</th>
                 <th class="col col--total">Total</th>
               </tr>
-              <tr class="row row--main">
-                <td class="col col--img"> <img src="..//img/orders/p1.jpg" alt="p1"><a href="#">remove</a></td>
-                <td class="col col--product">
-                  <p class="product-name">Buy 1 Package</p>
-                  <p class="product-subtitle">1 Essence Per Month</p>
-                  <p class="product-comment">(Plus Shipping & Handing Free)</p>
-                </td>
-                <td class="col col--quantity">1</td>
-                <td class="col col--price">$35.00</td>
-                <td class="col col--total">$35.00</td>
-              </tr>
-              <tr class="row row--main">
-                <td class="col col--img"> <img src="..//img/orders/p1.jpg" alt="p1"><a href="#">remove</a></td>
-                <td class="col col--product">
-                  <p class="product-name">Buy 1 Package</p>
-                  <p class="product-subtitle">1 Essence Per Month</p>
-                  <p class="product-comment">(Plus Shipping & Handing Free)</p>
-                </td>
-                <td class="col col--quantity">1</td>
-                <td class="col col--price">$35.00</td>
-                <td class="col col--total">$35.00</td>
-              </tr>
-              <tr class="row row--main">
-                <td class="col col--img"> <img src="..//img/orders/p1.jpg" alt="p1"><a href="#">remove </a></td>
-                <td class="col col--product">
-                  <p class="product-name">Buy 1 Package</p>
-                  <p class="product-subtitle">1 Essence Per Month</p>
-                  <p class="product-comment">(Plus Shipping & Handing Free)</p>
-                </td>
-                <td class="col col--quantity">1</td>
-                <td class="col col--price">$35.00</td>
-                <td class="col col--total">$35.00</td>
-              </tr>
             </table>
           </div>
-          <div class="btns-row"><a class="accent-btn simple" href="..//pages/shop.html">CONTINUE SHOPPING</a><a class="accent-btn" href="#">ORDER NOW</a>
+          <div class="btns-row"><a class="accent-btn simple" href="..//pages/shop.html">CONTINUE SHOPPING</a><a class="accent-btn" id="order-btn" href="#">ORDER NOW</a>
             <p>Shipping & taxes calculated at checkout</p>
           </div>
           <p class="orders-section__disclamer">ZENSE. process all orders in USD. While the cintent of your cart is currently displayyed in USD, you will check out using USD at the most current exchange rate.</p>
@@ -115,5 +82,18 @@
     <!-- FOOTER - end-->
     <!-- SCRIPTS-->
     <script src="../js/main.min.js"></script>
+    <template id="product-item">
+      <tr class="row row--main" data-product-id>
+        <td class="col col--img"> <img src="" alt="zense" data-img-src><a href="#" data-remove-btn>remove</a></td>
+        <td class="col col--product">
+          <p class="product-name" data-title></p>
+          <p class="product-subtitle">1 Essence Per Month</p>
+          <p class="product-comment">(Plus Shipping & Handing Free)</p>
+        </td>
+        <td class="col col--quantity" data-qty></td>
+        <td class="col col--price" data-price></td>
+        <td class="col col--total" data-full-price></td>
+      </tr>
+    </template>
   </body>
 </html>

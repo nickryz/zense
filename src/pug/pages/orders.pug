@@ -5,7 +5,7 @@ extends ../common/layouts/_layout
 
 block startOpt
     -startPath = '../'; 
-    -dataIsHome = false;   
+    -pageId = 'orders';   
 prepend metas
     meta(name="description" content='some dscr')
     meta(name="keywords" content='some keyw')
@@ -26,50 +26,61 @@ block content
                 .orders-section__inner-wrap
                     .orders-section__title-row
                         h1.orders-section__title.title My orders
-                        p.orders-section__grand-total Grand total <span>$35.00</span>
-                    table.orders-section__table
+                        p.orders-section__grand-total Grand total <span id="full-price">0</span>
+                    table.orders-section__table#items-list
                         tr.row.row--title
                             th.col.col--img
                             th.col.col--product Product
                             th.col.col--quantity Quantity
                             th.col.col--price Price
                             th.col.col--total Total
-                        tr.row.row--main
-                            td.col.col--img 
-                                img(src=`${startPath}/img/orders/p1.jpg` alt="p1") 
-                                a(href='#') remove
-                            td.col.col--product
-                                p.product-name Buy 1 Package
-                                p.product-subtitle 1 Essence Per Month
-                                p.product-comment (Plus Shipping & Handing Free)
-                            td.col.col--quantity 1
-                            td.col.col--price $35.00
-                            td.col.col--total $35.00
-                        tr.row.row--main
-                            td.col.col--img 
-                                img(src=`${startPath}/img/orders/p1.jpg` alt="p1") 
-                                a(href='#') remove
-                            td.col.col--product
-                                p.product-name Buy 1 Package
-                                p.product-subtitle 1 Essence Per Month
-                                p.product-comment (Plus Shipping & Handing Free)
-                            td.col.col--quantity 1
-                            td.col.col--price $35.00
-                            td.col.col--total $35.00
-                        tr.row.row--main
-                            td.col.col--img 
-                                img(src=`${startPath}/img/orders/p1.jpg` alt="p1")
-                                a(href='#') remove 
-                            td.col.col--product
-                                p.product-name Buy 1 Package
-                                p.product-subtitle 1 Essence Per Month
-                                p.product-comment (Plus Shipping & Handing Free)
-                            td.col.col--quantity 1
-                            td.col.col--price $35.00
-                            td.col.col--total $35.00
+                        //- tr.row.row--main(data-product-id="1714168365090")
+                        //-     td.col.col--img 
+                        //-         img(src=`${startPath}/img/orders/p1.jpg` alt="p1") 
+                        //-         a(href='#') remove
+                        //-     td.col.col--product
+                        //-         p.product-name Buy 1 Package
+                        //-         p.product-subtitle 1 Essence Per Month
+                        //-         p.product-comment (Plus Shipping & Handing Free)
+                        //-     td.col.col--quantity 1
+                        //-     td.col.col--price $35.00
+                        //-     td.col.col--total $35.00
+                        //- tr.row.row--main(data-product-id="1729242267682")
+                        //-     td.col.col--img 
+                        //-         img(src=`${startPath}/img/orders/p1.jpg` alt="p1") 
+                        //-         a(href='#') remove
+                        //-     td.col.col--product
+                        //-         p.product-name Buy 1 Package
+                        //-         p.product-subtitle 1 Essence Per Month
+                        //-         p.product-comment (Plus Shipping & Handing Free)
+                        //-     td.col.col--quantity 1
+                        //-     td.col.col--price $35.00
+                        //-     td.col.col--total $35.00
+                        //- tr.row.row--main(data-product-id="1729244397602")
+                        //-     td.col.col--img 
+                        //-         img(src=`${startPath}/img/orders/p1.jpg` alt="p1")
+                        //-         a(href='#') remove 
+                        //-     td.col.col--product
+                        //-         p.product-name Buy 1 Package
+                        //-         p.product-subtitle 1 Essence Per Month
+                        //-         p.product-comment (Plus Shipping & Handing Free)
+                        //-     td.col.col--quantity 1
+                        //-     td.col.col--price $35.00
+                        //-     td.col.col--total $35.00
+                        //- tr.row.row--main(data-product-id="1729244397602")
+                        //-     td.col.col--img 
+                        //-         img(src=`${startPath}/img/orders/p1.jpg` alt="p1")
+                        //-         a(href='#') remove 
+                        //-     td.col.col--product
+                        //-         p.product-name Buy 1 Package
+                        //-         p.product-subtitle 1 Essence Per Month
+                        //-         p.product-comment (Plus Shipping & Handing Free)
+                        //-     td.col.col--quantity 1
+                        //-     td.col.col--price $35.00
+                        //-     td.col.col--total $35.00
                 .btns-row
                     a.accent-btn.simple(href=`${startPath}/pages/shop.html`) CONTINUE SHOPPING
-                    a.accent-btn(href=`#`) ORDER NOW
+                    a#order-btn.accent-btn(href=`#`) ORDER NOW
                     p Shipping & taxes calculated at checkout
                 p.orders-section__disclamer ZENSE. process all orders in USD. While the cintent of your cart is currently displayyed in USD, you will check out using USD at the most current exchange rate.
 
@@ -78,3 +89,17 @@ block content
     // FOOTER
     include ../common/layouts/_footer
     // FOOTER - end
+block templates
+    //- product row
+    template#product-item
+        tr.row.row--main(data-product-id)
+            td.col.col--img 
+                img(src='' alt="zense" data-img-src) 
+                a(href='#' data-remove-btn) remove
+            td.col.col--product
+                p.product-name(data-title)
+                p.product-subtitle 1 Essence Per Month
+                p.product-comment (Plus Shipping & Handing Free)
+            td.col.col--quantity(data-qty)
+            td.col.col--price(data-price)
+            td.col.col--total(data-full-price)

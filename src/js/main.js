@@ -7,9 +7,11 @@ import addIndicators from 'scrollmagic/scrollmagic/uncompressed/plugins/debug.ad
 import ScrollMagic from 'scrollmagic/scrollmagic/uncompressed/ScrollMagic'
 import Swiper from 'swiper';
 import Counter from './misc/counter';
+import AddCart from './misc/addCart';
 import HoverImg from './misc/hoverImg';
 import ContactForm from './misc/contactform'
 import Tingle from 'tingle.js'
+// import Client from 'shopify-buy';
 // import './misc/isMobile';
 // import TweenLite from 'gsap/TweenLite';
 // import Scrollbar from 'smooth-scrollbar';
@@ -22,7 +24,8 @@ let mobileLs = 768;
 let body = document.body;
 let wW = window.innerWidth;
 let wH = window.innerHeight;
-let isHome = (body.getAttribute('data-ishome') == 'true') ? true : false;
+let page = body.getAttribute('data-pageid');
+// let pageType = 
 // let isMobile = isMobile();
 
 window.addEventListener('DOMContentLoaded', init);
@@ -33,7 +36,7 @@ function init () {
 
     
     
-    if(isHome) {
+    if(page == 'home') {
 
         // ==================== SCROLL TO ==================== 
 
@@ -79,7 +82,7 @@ function onLoad() {
 
     });
 
-    if(isHome) {
+    if(page == 'home') {
         // scrolling section
         scenes.push(function(){
             if(wW < mobileLs) return;
@@ -199,7 +202,7 @@ function onLoad() {
 
     // ==================== SWIPER ====================
 
-    if(isHome) {
+    if(page == 'home') {
         var swiper = new Swiper('.swiper-container', {
             slidesPerView: 'auto',
             watchSlidesVisibility: true,
@@ -234,16 +237,296 @@ function onLoad() {
             }); 
     }            
 
-    // ==================== COUNTER ====================
+    
+    
+    // ==================== LOAD PRODUCT INFO ====================
 
-    let counters = [].slice.call(document.querySelectorAll('.counter'));  
-    let activeCounters = [];  
-    if(counters.length) { 
-        for(let i = 0; i < counters.length; ++i) {
-            let counter = new Counter(counters[i]);   
-            activeCounters.push(counter);   
+    let root = (page == 'home') ? "./" : "../";
+    let products;
+
+    if(page == 'shop' || page == 'orders') {
+        
+        fetch(root + 'db/products.json').then(function(response) {
+            return response.json();
+        })
+        .then(function(productList) {
+            products = productList.products;
+        })
+        .then(()=> {
+            if(page == 'shop') {
+                renderProductList();
+            } else if (page == 'orders') {
+                renderOrderList();
+            }
+        })
+    }
+
+    // ==================== RENDER PRODUCT LIST ON ORDER PAGE ====================
+
+    function renderOrderList() {
+        let cartList = (window.localStorage.getItem('orderList')) ? JSON.parse(window.localStorage.getItem('orderList')) : false;
+        if(!cartList) return;
+
+        let productList = document.getElementById('items-list');
+        let templateItem = document.getElementById('product-item');
+        
+        for(let product in cartList) {
+            let productRow = templateItem.content.cloneNode(true);
+            
+            // product ID
+            productRow.querySelector('[data-product-id]').setAttribute('data-product-id', product);
+            // title
+            productRow.querySelector('[data-title]').innerHTML = products[product].title;
+            // qty
+            productRow.querySelector('[data-qty]').innerHTML = cartList[product];
+            // price
+            productRow.querySelector('[data-price]').innerHTML = products[product].currency + products[product].price;
+            // full price
+            productRow.querySelector('[data-full-price]').innerHTML = products[product].currency + products[product].price * cartList[product];
+            // img
+            productRow.querySelector('[data-img-src]').setAttribute('src', root + products[product].images.order);
+            // remove btn ID link
+            productRow.querySelector('[data-remove-btn]').setAttribute('href', '#' + product);
+            
+            // set in list
+            productList.appendChild(productRow)
         }
-    } 
+
+
+        // calculate full price
+        let fullPriceContainer = document.getElementById('full-price');
+        function calcFullPrice() {
+            let fullSum = 0;
+            let currency = '';
+
+            for(let product in cartList) {
+                let itemSum = cartList[product] * products[product].price;
+                fullSum += itemSum;
+                if(!currency) {
+                    currency = products[product].currency;
+                } 
+            }
+            fullPriceContainer.innerHTML = currency + fullSum;
+        }
+        calcFullPrice();
+
+        // remove from cart
+        let removeItemBtns = [].slice.call(document.querySelectorAll('[data-remove-btn]'));
+        for(let i = 0; i < removeItemBtns.length; ++i) {
+            removeItemBtns[i].addEventListener('click', removeItem);
+        }
+
+        function removeItem(e) {
+            e.preventDefault();
+            let target = e.currentTarget;
+            let idLink = e.currentTarget.getAttribute('href').slice(1);
+            let elToRemove = document.querySelector(`[data-product-id="${idLink}"]`);
+            elToRemove.parentElement.removeChild(elToRemove);
+            removeFromLocalStorage(idLink);
+            calcFullPrice();
+            window.orderLogic.updateOrderSum();
+        }
+
+        function removeFromLocalStorage(key) {
+            delete cartList[key];
+            window.localStorage.setItem("orderList", JSON.stringify(cartList));
+        }
+
+
+        // order btn
+
+        let orderBtn = document.getElementById('order-btn');
+
+        if(orderBtn) {
+            orderBtn.addEventListener('click', function(e){
+                e.preventDefault();
+                let formLink = 'https://thezense.com/cart/';
+
+                for(let product in cartList) {
+                    let stroke = product + ":" + cartList[product] + ",";
+                    formLink += stroke;
+                }
+                // console.log(formLink.slice(0,-1))
+                window.open(formLink.slice(0, -1), '_blank');
+            })
+        }
+
+
+    }
+
+
+    // ==================== RENDER PRODUCT LIST ON SHOP PAGE ====================
+
+    function renderProductList() {
+        let productList = document.getElementById('product-list');
+        let templateItem = document.getElementById('product-item');
+
+        for(let product in products) {
+
+            let productItem = templateItem.content.cloneNode(true);
+                // title
+                productItem.querySelector('[data-title]').innerHTML = products[product].title;
+                // dscr
+                let dscrBox = productItem.querySelector('[data-content-box]')
+                for(let i = 0; i < products[product].dscr.length; ++i) {
+                    let dscrP = document.createElement('div');
+                        dscrP.classList.add('table__content');
+                        dscrP.innerHTML = products[product].dscr[i];
+                    dscrBox.appendChild(dscrP);
+                }
+                // video link
+                productItem.querySelector('[data-video-src]').setAttribute('data-video-src', products[product].videosrc);
+                // price
+                productItem.querySelector('[data-price]').innerHTML = products[product].currency + products[product].price;
+                // product ID (add to cart btn)
+                productItem.querySelector('[data-product-id]').setAttribute('data-product-id', product);
+                // counter input ID
+                productItem.querySelector('.counter-input').setAttribute('id', product);
+                // faq text
+                let faqBox = productItem.querySelector('[data-faq-box]')
+                for(let i = 0; i < products[product].faq.length; ++i) {
+                    let faqP = document.createElement('div');
+                        faqP.classList.add('info-dscr__text');
+                        faqP.innerHTML = products[product].faq[i];
+                    faqBox.appendChild(faqP);
+                }
+                // ingridients list
+                let ingriBox = productItem.querySelector('[data-ingridients-list]')
+                for(let i = 0; i < products[product].ingridients.length; ++i) {
+                    let ingriP = document.createElement('li');
+                        // ingri.classList.add('info-dscr__text');
+                        ingriP.innerHTML = products[product].ingridients[i];
+                    ingriBox.appendChild(ingriP);
+                }
+                // images
+                productItem.querySelector('[media="(max-width: 576px)"]').setAttribute('srcset', root + products[product].images.sm);
+                productItem.querySelector('[media="(max-width: 992px)"]').setAttribute('srcset', root + products[product].images.md);
+                productItem.querySelector('[data-img-origin]').setAttribute('srcset', root + products[product].images.lg);
+                productItem.querySelector('[data-img-default]').setAttribute('srcset', root + products[product].images.default);
+
+                // set in list
+                productList.appendChild(productItem)
+        }
+        
+            // add counters logic
+            let counters = [].slice.call(document.querySelectorAll('.counter'));  
+            let activeCounters = [];  
+            if(counters.length) {    
+                for(let i = 0; i < counters.length; ++i) {
+                    let counter = new Counter(counters[i]);    
+                    activeCounters.push(counter);     
+                }
+            } 
+        
+
+        // add cart trigers 
+            let addCartBtns = [].slice.call(document.querySelectorAll('[data-product-id]'));  
+            let activeCartBtns = [];  
+            if(addCartBtns.length) { 
+                for(let i = 0; i < addCartBtns.length; ++i) {
+                    let btn = new AddCart(addCartBtns[i]);       
+                    activeCartBtns.push(btn);     
+                }
+            } 
+
+
+            let modalInfoTrigers = [].slice.call(document.querySelectorAll('.table__dscr-col'));
+
+            if(modalInfoTrigers.length) {
+            
+
+            // add popups Video and main-info
+            
+            // video
+            var modal = new Tingle.modal({
+                closeMethods: ['overlay', 'button'],
+                closeLabel: "Close",
+                cssClass: ['modal-frame'],
+                onOpen: function() {  
+                },
+                onClose: function() {
+                    modal.setContent('')   
+                }
+            });
+
+            function setVideo(template, target) {
+                let contentHTML = template.cloneNode(true);
+                let iframeSrc = contentHTML.querySelector('iframe');
+                let link = target.getAttribute('data-video-src');
+                if(link) {
+                    iframeSrc.src = link; 
+                    modal.setContent(contentHTML);  
+                }
+            } 
+            // video - end
+
+
+            for(let i = 0; i < modalInfoTrigers.length; ++i) {
+                modalInfoTrigers[i].addEventListener('click', function(e){
+                    let target = e.target;
+
+                    if(target.classList.contains('modal-triger')) {
+                        let videoContainer = document.getElementById('video-content');
+                        setVideo(videoContainer.content, target);
+                        modal.open();
+                    } else if (target.classList.contains('info-triger')) {
+                        let infoW = e.currentTarget.querySelector('.info-dscr');
+                        infoW.classList.add('opened');
+                    } else if (target.classList.contains('info-dscr__close')) {
+                        let infoW = e.currentTarget.querySelector('.info-dscr');
+                        infoW.classList.remove('opened');
+                    }
+                })
+            }
+        }
+
+    }
+    
+    
+    // ==================== CART ==================== 
+
+   
+
+
+    // update qty in cart container (global)
+
+    window.orderLogic = { 
+        updateOrderSum: function() { 
+            let container = document.getElementById('dot');
+            let ordersListJSON = window.localStorage.getItem('orderList');
+            if(!ordersListJSON) return;
+            let ordersList = (ordersListJSON) ? JSON.parse(ordersListJSON) : false;
+            let sum = 0;
+            
+            for (let product in ordersList) {
+                sum += ordersList[product];
+            } 
+            
+            if(sum > 0) {
+                
+                if(container.classList.contains('active')) {
+                    container.innerHTML = sum;
+                } else {
+                    let addQty = function() {
+                        container.innerHTML = sum;
+                        container.removeEventListener('transitionend', addQty)
+                    }   
+                    
+                    container.addEventListener('transitionend', addQty);
+                    container.classList.add('active');
+                }
+
+            } else {
+
+                if(container.classList.contains('active')) {
+                    container.innerHTML = '';
+                    container.classList.remove('active');
+                }
+            }
+        }
+    }
+    window.orderLogic.updateOrderSum();
+
   
     // ==================== HOVER IMG ====================
 
@@ -269,60 +552,6 @@ function onLoad() {
             formListSellector: '.contact__input',
         })
     }
-
-
-    
-
-    let modalInfoTrigers = [].slice.call(document.querySelectorAll('.table__dscr-col'));
-
-    if(modalInfoTrigers.length) {
-        
-
-        // ==================== POPUPs VIDEO ====================
-        var modal = new Tingle.modal({
-            closeMethods: ['overlay', 'button'],
-            closeLabel: "Close",
-            cssClass: ['modal-frame'],
-            onOpen: function() {
-            },
-            onClose: function() {
-                modal.setContent('')
-            }
-        });
-
-        function setVideo(template, target) {
-            let contentHTML = template.cloneNode(true);
-            let iframeSrc = contentHTML.querySelector('iframe');
-            let link = target.getAttribute('data-video-src');
-            if(link) {
-                iframeSrc.src = link;
-                modal.setContent(contentHTML);
-            }
-        }
-
-        // ==================== POPUPs VIDEO /end ====================
-
-
-        for(let i = 0; i < modalInfoTrigers.length; ++i) {
-            modalInfoTrigers[i].addEventListener('click', function(e){
-                let target = e.target;
-
-                if(target.classList.contains('modal-triger')) {
-                    let videoContainer = document.getElementById('video-content');
-                    setVideo(videoContainer.content, target);
-                    modal.open();
-                } else if (target.classList.contains('info-triger')) {
-                    let infoW = e.currentTarget.querySelector('.info-dscr');
-                    infoW.classList.add('opened');
-                } else if (target.classList.contains('info-dscr__close')) {
-                    let infoW = e.currentTarget.querySelector('.info-dscr');
-                    infoW.classList.remove('opened');
-                }
-            })
-        }
-    }
-
- 
 
 }
 

@@ -1,8 +1,8 @@
 //- ================= DEFAULT =================
 //- MAIN START PATH
 -var startPath = './';
-//- Home ID
--var dataIsHome = true;
+//- Page ID
+-var pageId = 'home';
 //- MIXINS
 include ../modules/_mixins
 
@@ -35,7 +35,7 @@ html(lang="en")
             //- CSS
             link(rel="stylesheet" href=mainStyle)
 
-    body(data-ishome=`${dataIsHome}`)
+    body(data-pageid=`${pageId}`)
         //- #wrap
         //-     #wrap-inner
         block preloader

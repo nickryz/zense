@@ -21,8 +21,8 @@ mixin phone(tel)
         .calling
 
 //- counter
-mixin counter
+mixin counter(id)
     .counter
         .btn.decrement -
-        input.counter-input(type="text" maxlength="2" value="0")
+        input.counter-input(type="text" maxlength="2" value="0" id=id)
         .btn.increment +
