@@ -1,23 +1,132 @@
 // ABOUT
 
-.about-section {
-    padding: 50px 0;
+.img-section {
+    margin: 180px 0;
 
-    &:first-child {
-        padding-top: 200px;
-        padding-bottom: 50px;
+    @include tablet-pr {
+        margin: 100px 0;
+    }
+
+    @include mobile-pr {
+        margin: 70px 0;
+    }
+
+    
+}
+
+.img-section__inner {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 1020px;
+    margin: 0 auto;
+
+    &.reverse {
+        .img-section__col--dscr {
+            order: -1;
+            padding-left: 0;
+            padding-right: 40px;
+
+            @include mobile-pr {
+                padding: 0;
+                order: initial;
+            }
+        }
+    }
+
+    @include mobile-pr {
+        flex-direction: column;
+    }
+}
+
+.img-section__col {
+    
+
+    &--img {
+        width: 47%;
+        img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        @include mobile-pr {
+            width: 100%;
+        }
         
-        @include mobile-ls {
-            padding: 100px 0;
-         }
     }
 
-    &--accent {
-        background: $accentColor3;
+    &--dscr {
+        width: 53%;
+        padding-left: 40px;
+
+        @include mobile-pr {
+            width: 100%;
+            padding: 0;
+            margin-top: 30px;
+        }
+
+        .text {
+            font-size: calc(12px + (14 - 12) * ((100vw - 480px) / (1440 - 480)));
+            margin-bottom: 20px;
+
+            @include tablet-pr {
+                margin-bottom: 10px;
+            }
+        }
+    }
+}
+
+
+.accent-section__inner {
+    background: $accentColor3;
+    padding: 100px 100px 150px;
+
+    @include tablet-pr {
+        padding: 70px 70px 120px;
     }
 
-    .title:not(:first-child) {
-        margin-top: 55px;
+    @include mobile-ls {
+        padding: 50px;
+    }
+    @include mobile-pr {
+        margin: 0 -15px;
+        padding: 50px 15px;
+    }
+}
+
+.accent-section__list {
+    list-style: none;
+    padding: 0;
+    margin: 0 -15px;
+    display: flex;
+    // flex-wrap: wrap;
+    justify-content: space-between;
+
+    @include tablet-pr {
+        flex-direction: column;
+    }
+}
+
+.accent-section__item {
+    max-width: 235px;
+    margin: 0 15px;
+
+    @include tablet-pr {
+        max-width: none;
     }
 
+    .accent-section__item-title {
+        min-height: 50px;
+
+        @include tablet-pr {
+            min-height: 0
+        }
+    }
+
+    .text {
+        font-size: calc(12px + (14 - 12) * ((100vw - 480px) / (1440 - 480)));
+        margin-bottom: 20px;
+        
+    }
 }

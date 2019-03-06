@@ -1,12 +1,12 @@
 
 .section {
-    margin-top: 250px;
+    margin-top: 180px;
 
     @include mobile-ls {
         margin-top: 96px;
      }
     @include mobile-pr {
-        margin-top: 64px;
+        margin-top: 0;
      }
 }
 
@@ -15,11 +15,13 @@ $columnPadding: 136px;
 // 1
 
 .section--1 {
+    padding-top: 50px;
     .section__inner-wrap {
         display: flex;
         align-items: center;
 
         @include mobile-ls {
+            // margin-top: 0;
             flex-direction: column;
         }
     }
@@ -86,10 +88,10 @@ $columnPadding: 136px;
 
         @include mobile-ls {
             position: relative;
-            transform: translateY(0);
+            transform: translate(0, 0);
             width: 100%;
             margin: 0 auto;
-            transform: translate(0, 0) !important;
+            // transform: translate(0, 0) !important;
         }
     }
 }
@@ -142,7 +144,7 @@ $columnPadding: 136px;
                 width: 100%;
                 display: block;
                 margin: 0 auto;
-                transform: translate(0, 0) !important;
+                transform: translate(0, 0);
             }
 
          }
@@ -171,7 +173,7 @@ $columnPadding: 136px;
             padding: 0;
             width: 100%;
             background: transparent;
-            transform: translate(0, 0) !important;
+            transform: translate(0, 0);
          }
     }
 }
@@ -391,7 +393,7 @@ $columnPadding: 136px;
                     position: relative;
                     overflow: hidden;
                     background: $accentColor3;
-                    border-width: 110px 128px;
+                    border-width: 55px 128px;
                     border-style: solid;
                     border-color: $accentColor3;
 

@@ -22,7 +22,10 @@
     <!-- STYLES-->
     <link rel="stylesheet" href="../css/main.min.css">
   </head>
-  <body data-pageid="shop"><a class="calling-wrap" href="tel:55555555" title="to call">
+  <body data-pageid="shop">
+    <div id="preloader">
+      <div class="logo-wrap"></div>
+    </div><a class="calling-wrap" href="tel:55555555" title="to call">
       <div class="calling"></div></a>
     <!-- HEADER-->
     <header class="header" id="main-header">
@@ -77,17 +80,21 @@
           </picture>
         </div>
         <div class="table__dscr-col">
-          <div class="info-dscr"><span class="info-dscr__close"></span>
+          <div class="info-dscr" data-faq-dscr><span class="info-dscr__close"></span>
             <div class="info-dscr__inner">
               <div class="info-dscr__scroller">
-                <div class="info-dscr__col info-dscr__col--left" data-faq-dscr>
-                  <div class="info-dscr__title">FAQ </div>
-                  <div class="info-dscr__text-box" data-faq-box></div>
+                <div class="info-dscr__title">FAQ </div>
+                <div class="info-dscr__text-box" data-faq-box>
+                  <div class="info-dscr__text"> </div>
                 </div>
-                <div class="info-dscr__col info-dscr__col--right">
-                  <div class="info-dscr__title">Ingridients</div>
-                  <ul class="info-dscr__text" data-ingridients-list></ul>
-                </div>
+              </div>
+            </div>
+          </div>
+          <div class="info-dscr" data-ingrid-dscr><span class="info-dscr__close"></span>
+            <div class="info-dscr__inner">
+              <div class="info-dscr__scroller">
+                <div class="info-dscr__title">Ingridients</div>
+                <ul class="info-dscr__text" data-ingridients-list></ul>
               </div>
             </div>
           </div>
@@ -97,8 +104,8 @@
               <div class="table__content-box" data-content-box></div>
               <ul class="table__more-list">
                 <li class="table__more-item modal-triger" data-video-src="">Watch video</li>
-                <li class="table__more-item info-triger">FAQ</li>
-                <li class="table__more-item info-triger">Ingridients</li>
+                <li class="table__more-item faq-triger">FAQ</li>
+                <li class="table__more-item ingrid-triger">Ingridients</li>
               </ul>
             </div>
             <div class="table__col table__col--right">

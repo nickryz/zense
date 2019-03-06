@@ -221,18 +221,20 @@ block templates
                     source(srcset="" data-img-origin)
                     img(srcset="" alt="My default image" data-img-default)
             .table__dscr-col
-                .info-dscr
+                .info-dscr(data-faq-dscr)
                     span.info-dscr__close
                     .info-dscr__inner
                         .info-dscr__scroller
-                            .info-dscr__col.info-dscr__col--left(data-faq-dscr)
-                                .info-dscr__title FAQ 
-                                .info-dscr__text-box(data-faq-box)
-                                    //- .info-dscr__text 
-                            .info-dscr__col.info-dscr__col--right
-                                .info-dscr__title Ingridients
-                                ul.info-dscr__text(data-ingridients-list)
-                                    //- li 
+                            .info-dscr__title FAQ 
+                            .info-dscr__text-box(data-faq-box)
+                                    .info-dscr__text 
+                .info-dscr(data-ingrid-dscr)
+                    span.info-dscr__close
+                    .info-dscr__inner
+                        .info-dscr__scroller
+                            .info-dscr__title Ingridients
+                            ul.info-dscr__text(data-ingridients-list)
+                                //- li 
                 .dscr-col__top
                     .table__col.table__col--left
                         .table__title(data-title) 
@@ -240,8 +242,8 @@ block templates
                             //- .table__content
                         ul.table__more-list
                             li.table__more-item.modal-triger(data-video-src="") Watch video
-                            li.table__more-item.info-triger FAQ
-                            li.table__more-item.info-triger Ingridients
+                            li.table__more-item.faq-triger FAQ
+                            li.table__more-item.ingrid-triger Ingridients
                     .table__col.table__col--right
                         .table__title Price
                         .table__content <span data-price></span>

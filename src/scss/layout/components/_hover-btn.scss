@@ -85,6 +85,7 @@ $lineSpace: 15px;
     font-weight: 700;
     display: inline-block;
     position: relative;
+    z-index: 8;
     padding-right: $lineSpace;
     color: $accentColor;
     transition: color $animateDur ease-out;

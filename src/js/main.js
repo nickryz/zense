@@ -1,14 +1,14 @@
 import TimelineLite from 'gsap/TimelineLite'
 import ScrollToPlugin from 'gsap/ScrollToPlugin'
-import EasePack from 'gsap/EasePack'
-import IScroll from 'iscroll/build/iscroll-probe';
+import EasePack, { Power1, Elastic } from 'gsap/EasePack'
+// import IScroll from 'iscroll/build/iscroll-probe';
 import animation from 'scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap'
-import addIndicators from 'scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators'
+// import addIndicators from 'scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators'
 import ScrollMagic from 'scrollmagic/scrollmagic/uncompressed/ScrollMagic'
 import Swiper from 'swiper';
 import Counter from './misc/counter';
 import AddCart from './misc/addCart';
-import HoverImg from './misc/hoverImg';
+// import HoverImg from './misc/hoverImg';
 import ContactForm from './misc/contactform'
 import Tingle from 'tingle.js'
 // import Client from 'shopify-buy';
@@ -21,20 +21,66 @@ let tabletPr = 992;
 let mobileLs = 768;
 
 // start param
-let body = document.body;
+let startLoadTime = new Date();
+let loadTimer;
+let preloader = document.getElementById('preloader');
+const body = document.body;
+let wrapper = document.getElementById('wrap');
 let wW = window.innerWidth;
 let wH = window.innerHeight;
+let scrollTop;
 let page = body.getAttribute('data-pageid');
-// let pageType = 
 // let isMobile = isMobile();
+
+
+// =============== START LISTENERS ==============
 
 window.addEventListener('DOMContentLoaded', init);
 window.addEventListener('load', onLoad);
 
 
+
+// ==============================================
+// ==================== INIT ====================
+// ==============================================
+
 function init () {
 
+    // ==================== PRELOADER (default) ====================
+
+    // preloader.style.display = 'flex';
+
+    // console.log(preloader)
+    if(!loadTimer) {
+        loadTimer = setTimeout(hidePreloaderLogic.bind(this), 60000)
+    }
+
+
+
+    // if(wW > mobileLs) {
+    //     let round = document.getElementById('round');
+    //     document.addEventListener("mousemove", function (e) {
+    //         console.dir(e.toElement)
     
+    //         let X = e.clientX;
+    //         let Y = e.clientY;
+    
+    //         TweenLite.to(round, 0.5, {
+    //             x: X, 
+    //             y: Y + window.pageYOffset, 
+    //             // ease: Circ.easeOut,
+    //             overwrite: 4,
+    //             onComplete: () => {
+    //                 console.log('yes')
+    //             }
+    //         })
+    //     }, false);
+    // }
+
+
+
+
+
     
     if(page == 'home') {
 
@@ -48,157 +94,34 @@ function init () {
                     let target = e.currentTarget;
                     let link = target.getAttribute('href');
                     if(!link) return;
-                    TweenLite.to(window, 1, {scrollTo:link});
+                    TweenLite.to(window, 1, {
+                        scrollTo:link, 
+                        onComplete: ()=>{
+                            scrollTop = window.pageYOffset || document.documentElement.scrollTop;;
+                        }
+                    });
                 })
             }
         }
     }
  
     // ==================== MOBILE MENU ====================
+    
+    let burgerElem = document.getElementById('burger-btn');
+    let overlay = document.getElementById('overlay');
+    let nav = document.getElementById('nav');
+
+
+    function mobileMenuHandler(e) {
+        burgerElem.classList.toggle('clicked');
+        overlay.classList.toggle('show');
+        nav.classList.toggle('show');
+        body.classList.toggle('overflow');
+    }
 
     burgerElem.addEventListener('click', mobileMenuHandler);
     overlay.addEventListener('click', mobileMenuHandler);
 
-}
-
-function onLoad() {
-    // ==================== SCROLL MAGIC ====================
-    var controller = new ScrollMagic.Controller({
-        refreshInterval: 5
-    });
-    var scenes = [];
-    var activeScenes = [];
-
-    // fixed menu
-    scenes.push(function(){
-        let headerEl = document.getElementById('main-header');
-        let paddingOffset = 16;
-        
-        return new ScrollMagic.Scene({
-            offset: paddingOffset 
-        })
-        .setClassToggle('#main-header', 'full')
-        .addTo(controller);
-
-    });
-
-    if(page == 'home') {
-        // scrolling section
-        scenes.push(function(){
-            if(wW < mobileLs) return;
-            let scrollContainer = document.querySelector('.section__text-scroll-outer');
-            let scrollLay = document.querySelector('.section__text-scroll-inner');
-            let scrollTl = new TimelineLite()
-                            .to(scrollLay, 0.6, {y: -(scrollLay.scrollHeight - scrollContainer.clientHeight), ease: Power0.easeNone},"+=0.2")
-                            .to(scrollLay, 0.2, {})
-
-            function getScrollOfset() {
-                let pinnedImg = document.querySelector('.section--3');
-                let pinnedImgCord = pinnedImg.getBoundingClientRect();
-                let x = pinnedImgCord.top + pageYOffset - (window.innerHeight/2 - pinnedImg.clientHeight/2);
-                return x;
-            }
-
-            return new ScrollMagic.Scene({
-                duration: scrollLay.scrollHeight * 2,
-                offset: getScrollOfset(),
-                reverse: true,
-                triggerHook: 0.5 
-            })
-            .setTween(scrollTl)
-            // .addIndicators()
-            .setPin(".section--3")
-            .addTo(controller);
-        });
-
-        // scene 2 (parallax)
-        scenes.push(function(){ 
-            if(wW < mobileLs) return;
-            let section1 = document.querySelector('.section--1')
-            let paralaxTween1 = new TimelineLite()
-                                .fromTo(".section--1 .parallax-lay", 1, {y: '-20%'}, {y: '20%',ease: Power0.easeNone})
-                                .fromTo(".section--1 .parallax-img", 1, {y: '-130%'}, {y: '30%',ease: Power0.easeNone}, 0)
-            return new ScrollMagic.Scene({
-                triggerElement: '.section--1', 
-                offset: -window.innerHeight,
-                duration: window.innerHeight*2 + section1.clientHeight
-            })
-            .setTween(paralaxTween1)
-            .addTo(controller);
-        });
-
-        // scene 3 (parallax)
-        scenes.push(function(){
-            if(wW < mobileLs) return;
-            let section2 = document.querySelector('.section--2')
-            let scene3;
-            let paralaxTween2 = new TimelineLite()
-                .fromTo(".section--2 .parallax-lay", 1, {y: '-10%'}, {y: '10%',ease: Power0.easeNone})
-                .fromTo(".section--2 .parallax-img", 1, {y: '30%'}, {y: '-30%',ease: Power0.easeNone}, 0)
-            return new ScrollMagic.Scene({
-                triggerElement: section2, 
-                offset: -window.innerHeight,
-                duration: window.innerHeight*2 + section2.clientHeight
-            })
-            .setTween(paralaxTween2)
-            .addTo(controller);
-        });
-
-    }
-    
-    function addScenes(newScenes) {
-      // reset active scenes
-      activeScenes = [];
-      // loop over each scene and add/re-add
-      newScenes.forEach(function (newScene, index) {
-        if (typeof newScene === 'function') {   
-          // add the new scene
-          let newS = newScene();
-          // push it to our active scenes array
-          activeScenes.push(newS);
-        }
-      }); 
-    }
-
-    // if(wW >= mobileLs) {
-    addScenes(scenes);
-    // } 
-  
-    // ==================== UPDATES WHEN RESIZE ==================== 
-    
-    
-    let resizeTimeout = null;
-    var timeoutDurationScrollMagic = 400; 
-
-    window.addEventListener('resize', updateOnResize.bind(this))
-
-    function updateOnResize() {
-        wW = window.innerWidth;
-        wH = window.innerHeight;
-
-        // for scrollMagic
-        if (resizeTimeout) {
-            clearTimeout(resizeTimeout);
-          }
-          resizeTimeout = setTimeout(function() {
-            // loop over each active scene
-            activeScenes.forEach(function (scene) {
-              // make sure scene wasn't null
-              if (scene) { 
-                // destroy active scene
-                scene.destroy(true);
-              }
-            });
-            // after we have destroyed old scenes, re-add them
-            addScenes(scenes);
-          }, timeoutDurationScrollMagic);
-
-        
-        if(wW >= mobileLs && body.classList.contains('overflow')) {
-            mobileMenuHandler();
-        };
-        
-    }
 
     // ==================== SWIPER ====================
 
@@ -235,9 +158,13 @@ function onLoad() {
                 }
                 }
             }); 
-    }            
-
+    }          
     
+    
+    // ==============================================
+    // ================= SHOP LOGIC =================
+    // ==============================================
+
     
     // ==================== LOAD PRODUCT INFO ====================
 
@@ -350,10 +277,7 @@ function onLoad() {
                 window.open(formLink.slice(0, -1), '_blank');
             })
         }
-
-
     }
-
 
     // ==================== RENDER PRODUCT LIST ON SHOP PAGE ====================
 
@@ -469,24 +393,24 @@ function onLoad() {
                         let videoContainer = document.getElementById('video-content');
                         setVideo(videoContainer.content, target);
                         modal.open();
-                    } else if (target.classList.contains('info-triger')) {
-                        let infoW = e.currentTarget.querySelector('.info-dscr');
+                    } else if (target.classList.contains('faq-triger')) {
+                        let infoW = e.currentTarget.querySelector('[data-faq-dscr]');
+                        infoW.classList.add('opened');
+                    } else if (target.classList.contains('ingrid-triger')) {
+                        let infoW = e.currentTarget.querySelector('[data-ingrid-dscr]');
                         infoW.classList.add('opened');
                     } else if (target.classList.contains('info-dscr__close')) {
-                        let infoW = e.currentTarget.querySelector('.info-dscr');
-                        infoW.classList.remove('opened');
+                        e.target.parentElement.classList.remove('opened');
                     }
                 })
             }
         }
 
+      
     }
     
     
     // ==================== CART ==================== 
-
-   
-
 
     // update qty in cart container (global)
 
@@ -526,7 +450,227 @@ function onLoad() {
         }
     }
     window.orderLogic.updateOrderSum();
+}
 
+
+
+
+// ==============================================
+// ==================== LOAD ====================
+// ==============================================
+
+function onLoad() {
+
+    // ==================== SCROLL MAGIC ====================
+
+    // start params
+    const controller = new ScrollMagic.Controller({
+        // container: '#wrap',
+        // refreshInterval: 50
+    });
+    let scenes = [];
+    let activeScenes = [];
+
+    // => FIXED MENU
+    let headerEl = document.getElementById('main-header');
+
+    scenes.push(function(){
+        let paddingOffset = 16;
+        
+        return new ScrollMagic.Scene({
+            offset: paddingOffset 
+        })
+        .setClassToggle('#main-header', 'full')
+        .addTo(controller);
+
+    });
+    
+    // HOME PAGE scenes
+
+    if(page == 'home') {
+
+    
+        if(page == 'home') {
+            
+            // => TOP SECTION
+            let topSection = document.querySelector('.top-section');
+            
+            // letters animation
+            /*         
+                    scenes.push(function(){
+                        if(wW < mobileLs) return;
+                        let wordsList = [].slice.call(document.querySelectorAll('.top-section .word'));
+                        let tween = new TimelineLite();
+                        
+                        for(let i = 0; i < wordsList.length; ++i) {
+                            let letters = [].slice.call(wordsList[i].querySelectorAll('.animated-letters'));
+                            tween.staggerFromTo(letters, 0.5, {y: '100%'}, {y: '0%', ease: Power4.easeOut}, 0.05, 0);
+                        }
+                        return new ScrollMagic.Scene({
+                            triggerElement: topSection, 
+                        })
+                        .setTween(tween)
+                        .addTo(controller);
+                    });
+            */
+    
+            // => SECTION 1 
+            let section1 = document.querySelector('.section--1')
+            // scale
+            scenes.push(function(){ 
+                // if(wW < mobileLs) return;
+                let tween = new TimelineLite()
+                        .fromTo(".section--1 .parallax-img", 0.3, {scale: 0.8, y: (wW < mobileLs) ? 0 : '-50%'}, {scale: 1, y: (wW < mobileLs) ? 0 : '-50%', ease: Power0.easeNone}, 0)
+                return new ScrollMagic.Scene({
+                    triggerElement: section1, 
+                    duration: section1.clientHeight / 2
+                })
+                .setTween(tween)
+                .addTo(controller);
+            });
+    
+            // => SECTION 2
+            let section2 = document.querySelector('.section--2')
+            // scale
+            scenes.push(function(){
+                // if(wW < mobileLs) return;
+                let tween = new TimelineLite()
+                    .fromTo(".section--2 .parallax-img", 0.3, {scale: 0.8}, {scale: 1,ease: Power0.easeNone}, 0)
+                return new ScrollMagic.Scene({
+                    triggerElement: section2, 
+                    duration: section2.clientHeight/2
+                })
+                .setTween(tween)
+                .addTo(controller);
+            });
+    
+            // => SECTION 3
+            let section3 = document.querySelector('.section--3')
+            // scrolling section
+            scenes.push(function(){
+                if(wW < mobileLs) return;
+                let scrollContainer = document.querySelector('.section__text-scroll-outer');
+                let scrollLay = document.querySelector('.section__text-scroll-inner');
+                let scrollTl = new TimelineLite()
+                                .to(scrollLay, 0.6, {y: -(scrollLay.scrollHeight - scrollContainer.clientHeight), ease: Power0.easeNone},"+=0.2")
+                                .to(scrollLay, 0.2, {})
+    
+                function getScrollOfset() {
+                    let pinnedImg = section3;
+                    let pinnedImgCord = pinnedImg.getBoundingClientRect();
+                    let x = pinnedImgCord.top + pageYOffset - (window.innerHeight/2 - pinnedImg.clientHeight/2);
+                    return x;
+                }
+    
+                return new ScrollMagic.Scene({
+                    duration: scrollLay.scrollHeight * 2,
+                    offset: getScrollOfset(),
+                    reverse: true,
+                    triggerHook: 0.5, 
+                })
+                .setTween(scrollTl)
+                .setPin(section3)
+                .addTo(controller);
+            });
+    
+            // scale
+            scenes.push(function(){ 
+                // if(wW < mobileLs) return;
+                let tween = new TimelineLite()
+                        .fromTo(".section--3 .parallax-img", 0.3, {scale: 0.8}, {scale: 1, ease: Power0.easeNone}, 0)
+                return new ScrollMagic.Scene({
+                    triggerElement: (wW < mobileLs) ? ".section--3 .parallax-img" : section3, 
+                    duration: (wW < mobileLs) ? 0 : section3.clientHeight / 4
+                })
+                .setTween(tween)
+                .addTo(controller);
+            });
+        }
+    }
+
+
+    // ABOUT PAGE scenes
+
+    if(page == 'about') {
+        let sectionsList = [].slice.call(document.querySelectorAll('.img-section'));
+        
+        // scale
+        for(let i =0; i < sectionsList.length; ++i) {
+            let scaledImg = sectionsList[i].querySelector('.scaled-anime');
+            scenes.push(function(){ 
+                // if(wW < mobileLs) return;
+                let tween = new TimelineLite()
+                        .fromTo(scaledImg, 0.3, {scale: 0.8}, {scale: 1, ease: Power0.easeNone}, 0)
+                return new ScrollMagic.Scene({
+                    triggerElement: sectionsList[i], 
+                    duration: (wW < mobileLs) ? 0 : sectionsList[i].clientHeight / 2
+                })
+                .setTween(tween)
+                .addTo(controller);
+            });
+
+        }
+
+
+    }
+
+
+
+    // Add scenes (activate)
+    function addScenes(newScenes) {
+      // reset active scenes
+      activeScenes = [];
+      // loop over each scene and add/re-add
+      newScenes.forEach(function (newScene, index) {
+        if (typeof newScene === 'function') {   
+          // add the new scene
+          let newS = newScene();
+          // push it to our active scenes array
+          activeScenes.push(newS);
+        }
+      }); 
+    }
+
+    // if(wW >= mobileLs) {
+    addScenes(scenes);
+
+    // ==================== UPDATES WHEN RESIZE ==================== 
+    
+    let resizeTimeout = null;
+    let timeoutDurationScrollMagic = 400; 
+
+    window.addEventListener('resize', updateOnResize.bind(this))
+
+    function updateOnResize() {
+        wW = window.innerWidth;
+        wH = window.innerHeight;
+
+        // for SCROLL MAGIC
+        if (resizeTimeout) {
+            clearTimeout(resizeTimeout);
+          }
+          resizeTimeout = setTimeout(function() {
+            // loop over each active scene
+            activeScenes.forEach(function (scene) {
+              // make sure scene wasn't null
+              if (scene) { 
+                // destroy active scene
+                scene.destroy(true);
+              }
+            });
+            // after we have destroyed old scenes, re-add them
+            addScenes(scenes);
+          }, timeoutDurationScrollMagic);
+
+        
+        if(wW >= mobileLs && body.classList.contains('overflow')) {
+            mobileMenuHandler();
+        };
+        
+    }
+
+    
+    
   
     // ==================== HOVER IMG ====================
 
@@ -553,21 +697,77 @@ function onLoad() {
         })
     }
 
+
+    // ==================== SMOOTH SCROLL ====================
+
+    // if(page == 'home') {
+        function smoothScroll() {
+            scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            let isScrollFromWheel = false;
+            let wrapperScrollHeight = window.scrollHeight;
+            let tweenScroll;
+            const doScrolling = e => {
+                e.preventDefault();
+                isScrollFromWheel = true;
+                const scrollTime = 1;
+                const scrollDistance = 170;
+                const delta = e.wheelDelta / 120 || -e.detail / 3;
+                scrollTop = scrollTop - parseInt(delta * scrollDistance);
+                // scrollTop = Math.max(0, Math.min(wrapperScrollHeight - window.innerHeight, scrollTop));
+                if(tweenScroll) tweenScroll.kill();
+                tweenScroll = TweenMax.to(window, scrollTime, {
+                    scrollTo: {
+                        y: scrollTop, 
+                        ease: Sine.easeNone,
+                        autoKill: false
+                    }, 
+                    onComplete:function() {
+                        isScrollFromWheel = false;
+                    }
+                }); 
+            }; 
+            document.addEventListener("mousewheel", doScrolling);
+            document.addEventListener("DOMMouseScroll", doScrolling);
+            
+            
+            let isScrolling = false;
+            window.addEventListener("scroll", function(e){
+                isScrolling = true;
+            });
+            
+            setInterval(()=>{
+                if(isScrolling && !isScrollFromWheel) {
+                    isScrolling = false;
+                    console.log('LAG')
+                    scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                }
+            }, 750)
+
+        }
+
+        smoothScroll()
+    // } 
+
+        // ==================== PRELOADER HIDE ====================
+
+        loadTimer = setTimeout(hidePreloaderLogic.bind(this), 500) 
+
+        
+        
 }
 
+// ==================== PRELOADER HIDE ====================
 
-// ==================== MOBILE MENU HANDLER====================
-
-
-let burgerElem = document.getElementById('burger-btn');
-let overlay = document.getElementById('overlay');
-let nav = document.getElementById('nav');
-
-
-function mobileMenuHandler(e) {
-    burgerElem.classList.toggle('clicked');
-    overlay.classList.toggle('show');
-    nav.classList.toggle('show');
-    body.classList.toggle('overflow');
+function hidePreloaderLogic() {
+    let preloaderHide = function() {
+        // body.classList.remove('overflow');
+        preloader.classList.remove('fade-out');
+        preloader.classList.add('hide');
+        preloader.removeEventListener('transitionend', preloaderHide);
+    }
+    
+    preloader.addEventListener('transitionend', preloaderHide);
+    preloader.classList.add('fade-out')
 }
+
 

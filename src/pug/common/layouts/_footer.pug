@@ -4,6 +4,13 @@ footer.main-footer
         if footerFull
             .main-footer__call-action
                 h2.main-footer__title.title #{contentText}
+                    //- -var title = contentText.split(' ');
+                    //- each val in title   
+                    //-     span.word
+                    //-         -var letters = val.split('');
+                    //-         each val in letters
+                    //-             span.letter-overflow
+                    //-                 span.animated-letters= val
                 a.accent-btn(href=`${startPath}/pages/shop.html`) ORDER NOW
         .main-footer__copyright-row
              a.main-footer__logo(href="/")

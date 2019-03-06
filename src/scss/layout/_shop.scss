@@ -125,11 +125,11 @@
             height: 100%;
         }
         .info-dscr__scroller {
-            display: flex;
+            // display: flex;
 
-            @include mobile-pr {
-                flex-direction: column;
-            }
+            // @include mobile-pr {
+            //     flex-direction: column;
+            // }
         }
 
         .info-dscr__close {
@@ -161,30 +161,29 @@
             }
         }
 
-        .info-dscr__col {
-            // width: 50%;
+        // .info-dscr__col {
 
-            ul {
-                padding-left: 20px;
-            }
+        //     ul {
+        //         padding-left: 20px;
+        //     }
 
-            &--left {
-                width: 60%;
-                padding-right: 15px;
+        //     &--left {
+        //         width: 60%;
+        //         padding-right: 15px;
 
-                @include mobile-pr {
-                    width: 100%;
-                }
-            }
-            &--right {
-                width: 40%;
+        //         @include mobile-pr {
+        //             width: 100%;
+        //         }
+        //     }
+        //     &--right {
+        //         width: 40%;
 
-                @include mobile-pr {
-                    width: 100%;
-                    margin-top: 30px;
-                }
-            }
-        }
+        //         @include mobile-pr {
+        //             width: 100%;
+        //             margin-top: 30px;
+        //         }
+        //     }
+        // }
 
         .info-dscr__title {
             font-weight: 700;
@@ -345,7 +344,7 @@
     }
 
     .table__title {
-        line-height: 20px;
+        line-height: 1.5;
     }
 
     .table__content {

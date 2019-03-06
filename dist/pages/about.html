@@ -22,7 +22,10 @@
     <!-- STYLES-->
     <link rel="stylesheet" href="../css/main.min.css">
   </head>
-  <body data-pageid="about"><a class="calling-wrap" href="tel:55555555" title="to call">
+  <body data-pageid="about">
+    <div id="preloader">
+      <div class="logo-wrap"></div>
+    </div><a class="calling-wrap" href="tel:55555555" title="to call">
       <div class="calling"></div></a>
     <!-- HEADER-->
     <header class="header" id="main-header">
@@ -45,36 +48,83 @@
     <!-- HEADER - end-->
     <!-- MAIN CONTENT-->
     <main class="main">
-      <div class="about-section">
+      <section class="img-section"> 
         <div class="container">
-          <div class="about__inner">
-            <h1 class="title">Nothing saps a woman’s confidence faster than hair loss.</h1>
-            <p class="text">Strong, thick, healthy hair is associated with youth and vitality, and is considered an essential part of a woman’s natural beauty.</p>
-            <p class="text">It’s no wonder then, so many women feel deeply embarrassed or even ashamed by their hair loss. Afraid of what others will think, they disguise their receding hairlines and thinning hair with short haircuts or volumizers.</p>
-            <p class="text">And because everyone talks about men’s hair loss, but not women’s, they often feel like they’re the only ones in the world who are struggling with it.</p>
-            <h3 class="title">Know this: You are not alone.</h3>
-            <p class="text">Pregnancy, menopause, aging, illness, injury, medication, weight changes, and stress are just some of the reasons why many women suffer from some form of hair loss by the time they turn 40.</p>
-            <p class="text">But you don’t have to accept that “it’s just a part of life” or “that’s the way it is.” Or resign yourself to using conventional treatments such as laser therapy or chemical applications to treat your hair.</p>
-            <h3 class="title">We’re here to help you fight it. Naturally.</h3>
-            <p class="text">At Zense, our mission is to help you reclaim your confidence and inner pride by giving you back naturally gorgeous, thick, and healthy hair.</p>
-            <p class="text">Using only organic, natural essences and extracts that nourish your hair from root to tip, promote new hair growth, and strengthen your existing hair.</p>
-            <p class="text">No matter your age, or what you’re going through in your life.</p>
+          <div class="img-section__inner">
+            <div class="img-section__col img-section__col--img">
+              <picture>
+                <source srcset="" media="(max-width: 576px)">
+                <source srcset="" media="(max-width: 992px)">
+                <source srcset="../img/about/p1.jpg"><img class="scaled-anime" srcset="../img/about/p1.jpg" alt="p1">
+              </picture>
+            </div>
+            <div class="img-section__col img-section__col--dscr">
+              <h1 class="title">Nothing saps a woman’s confidence faster than hair loss.</h1>
+              <p class="text">Strong, thick, healthy hair is associated with youth and vitality, and is considered an essential part of a woman’s natural beauty.</p>
+              <p class="text">It’s no wonder then, so many women feel deeply embarrassed or even ashamed by their hair loss. Afraid of what others will think, they disguise their receding hairlines and thinning hair with short haircuts or volumizers.</p>
+              <p class="text">And because everyone talks about men’s hair loss, but not women’s, they often feel like they’re the only ones in the world who are struggling with it.</p>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="about-section about-section--accent">
+      </section>
+      <section class="img-section"> 
         <div class="container">
-          <div class="about__inner">
-            <h2 class="title accent">OUR VALUES</h2>
-            <h3 class="title">Pure + Powerful Ingredients</h3>
-            <p class="text">All of Zense’s organic ingredients are selected for their powerful restorative and growth-boosting abilities. Helping you maximize your new hair growth, while strengthening your existing hair to prevent further loss.</p>
-            <h3 class="title">Fast Results</h3>
-            <p class="text">Some hair loss treatments claim best results after 6 months of use. That’s a long time to wait. Which is why we developed unique formulas that work rapidly, giving you noticeable results in as little as 3 weeks.</p>
-            <h3 class="title">Simple Applications</h3>
-            <p class="text">Your life is busy enough already. So all our treatments are designed to blend perfectly with your existing care routines, making it easier for you to follow them—and see results sooner.</p>
+          <div class="img-section__inner reverse">
+            <div class="img-section__col img-section__col--img">
+              <picture>
+                <source srcset="" media="(max-width: 576px)">
+                <source srcset="" media="(max-width: 992px)">
+                <source srcset="../img/about/p3.jpg"><img class="scaled-anime" srcset="../img/about/p3.jpg" alt="p3">
+              </picture>
+            </div>
+            <div class="img-section__col img-section__col--dscr">
+              <h2 class="title">Know this: You are not alone.</h2>
+              <p class="text">Pregnancy, menopause, aging, illness, injury, medication, weight changes, and stress are just some of the reasons why many women suffer from some form of hair loss by the time they turn 40.</p>
+              <p class="text">But you don’t have to accept that “it’s just a part of life” or “that’s the way it is.” Or resign yourself to using conventional treatments such as laser therapy or chemical applications to treat your hair.</p>
+            </div>
           </div>
         </div>
-      </div>
+      </section>
+      <section class="img-section"> 
+        <div class="container">
+          <div class="img-section__inner">
+            <div class="img-section__col img-section__col--img">
+              <picture>
+                <source srcset="" media="(max-width: 576px)">
+                <source srcset="" media="(max-width: 992px)">
+                <source srcset="../img/about/p2.jpg"><img class="scaled-anime" srcset="../img/about/p2.jpg" alt="p2">
+              </picture>
+            </div>
+            <div class="img-section__col img-section__col--dscr">
+              <h2 class="title">We’re here to help you fight it. Naturally.</h2>
+              <p class="text">At Zense, our mission is to help you reclaim your confidence and inner pride by giving you back naturally gorgeous, thick, and healthy hair.</p>
+              <p class="text">Using only organic, natural essences and extracts that nourish your hair from root to tip, promote new hair growth, and strengthen your existing hair.</p>
+              <p class="text">No matter your age, or what you’re going through in your life.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="accent-section">
+        <div class="container">
+          <div class="accent-section__inner">
+            <h2 class="title">OUR VALUES</h2>
+            <ul class="accent-section__list">
+              <li class="accent-section__item">
+                <h3 class="accent-section__item-title">Pure + Powerful Ingridients</h3>
+                <p class="text">All of Zense’s organic ingredients are selected for their powerful restorative and growth-boosting abilities. Helping you maximize your new hair growth, while strengthening your existing hair to prevent further loss.</p>
+              </li>
+              <li class="accent-section__item">
+                <h3 class="accent-section__item-title">Fast Results</h3>
+                <p class="text">Some hair loss treatments claim best results after 6 months of use. That’s a long time to wait. Which is why we developed unique formulas that work rapidly, giving you noticeable results in as little as 3 weeks.</p>
+              </li>
+              <li class="accent-section__item">
+                <h3 class="accent-section__item-title">Simple Applications</h3>
+                <p class="text">Your life is busy enough already. So all our treatments are designed to blend perfectly with your existing care routines, making it easier for you to follow them—and see results sooner.</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
     </main>
     <!-- MAIN CONTENT - end-->
     <!-- FOOTER-->

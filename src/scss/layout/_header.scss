@@ -4,12 +4,13 @@
     padding: 76px 0 10px;
     position: fixed;
     z-index: 9;
-    transition: transform 0.35s, background 0.35s;
+    top: 0;
+    transition: transform 0.35s, background 0.35s, padding-top 0.35s;
     // will-change: transform;
 
     &.full {
-        transform: translateY(-60%) translateZ(0);
-        // padding: 10px 0;
+        // transform: translateY(-60%) translateZ(0);
+        padding-top: 10px;
         background: rgba(255,255,255, 0.9);
 
         .burger {
@@ -18,15 +19,14 @@
     }
 
     @include tablet-pr {
-        padding: 38px 0;
+        padding: 10px 0;
+
+    //     &.full {
+    //         // transform: translateY(0) translateZ(0);
+    //     }
     }
     
     @include mobile-ls {
-        padding: 10px 0;
-
-        &.full {
-            padding: 0;
-        }
 	}
 }
 .header__inner {
@@ -76,6 +76,7 @@
 
     @include tablet-pr {
         display: inline-block;
+        top: 23px;
      }
 }
 .main-nav__list {

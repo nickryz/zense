@@ -22,6 +22,13 @@ block content
             .container
                 .top-section__dscr
                     h1.title.top-section__title For hair like in your 20s in your 40s, 50s & beyond
+                        //- -var title = 'For hair like in your 20s in your 40s, 50s & beyond'.split(' ');
+                        //-  each val in title   
+                        //-     span.word
+                        //-         -var letters = val.split('');
+                        //-         each val in letters
+                        //-             span.letter-overflow
+                        //-                 span.animated-letters= val
                     p.text.top-section__text Zense’s organic treatments encourage new hair growth and help you naturally restore your hair’s original beauty, strength, and thickness in as little as 3 weeks. Without lasers.
                     +hover-btn('#learn-more', 'Learn more')(class='scroll-triger')
         section.section.section--1#learn-more
@@ -33,9 +40,16 @@ block content
                             picture.section__img.parallax-img
                                 source(srcset=`${startPath}img/main/1-sm.jpg` media="(max-width: 768px)")
                                 source(srcset=`${startPath}img/main/1.jpg`)
-                                img.section__img.parallax-img(src="img/main/1.jpg" alt="zense 1")
+                                img(src="img/main/1.jpg" alt="zense 1")
                     .section__text-col
-                        h2.section__title.title Thinning hair, receding hairlines, and bald patches aren't just "a men's thing."  
+                        h2.section__title.title Thinning hair, receding hairlines, and bald patches aren't just a men's thing.  
+                            //- -var title = "Thinning hair, receding hairlines, and bald patches aren't just a men's thing.".split(' ');
+                            //- each val in title   
+                            //-     span.word
+                            //-         -var letters = val.split('');
+                            //-         each val in letters
+                            //-             span.letter-overflow
+                            //-                 span.animated-letters= val
                         .section__text.text Up to 40% of women aged 40, and 80% of women aged 60 and over suffer from some form of hair loss, according to the American Academy of Dermatology and the American Hair Loss Association.   
                         .section__text.text And while there are many treatments available to help men regrow and strengthen their hair, women’s options were limited to expensive laser therapies or harsh chemical treatments.
                         .section__text.text Other women would cut their hair shorter, dye their hair lighter, or use volumizers to try and disguise their hair loss.  
@@ -44,7 +58,14 @@ block content
             .container
                 .section__inner-wrap
                     .section__text-col.parallax-lay
-                        h2.section__title.title But now, you don't have to. Because you can fight it - naturally.  
+                        h2.section__title.title But now, you don't have to. Because you can fight it - naturally. 
+                            //- -var title = "But now, you don't have to. Because you can fight it - naturally.".split(' ');
+                            //- each val in title   
+                            //-     span.word
+                            //-         -var letters = val.split('');
+                            //-         each val in letters
+                            //-             span.letter-overflow
+                            //-                 span.animated-letters= val
                         .section__text.text Combining ancient oriental medicinal herbs with a modern delivery system, Zense’s certified organic and vegan treatments <span>naturally encourage the growth of new, healthy hair</span>, while strengthening and rejuvenating your existing hair inside and out.   
                         .section__text.text Stopping hair loss in its tracks and giving you stronger, thicker, more luscious hair - without lasers or harsh chemicals.
                         +hover-btn(`${startPath}pages/shop.html`, 'Order now')
@@ -53,7 +74,7 @@ block content
                             picture.section__img.parallax-img
                                 source(srcset="img/main/2-sm.jpg" media="(max-width: 768px)")
                                 source(srcset="img/main/2.jpg")
-                                img.section__img.parallax-img(src="img/main/2.jpg" alt="zense 2")
+                                img(src="img/main/2.jpg" alt="zense 2")
         section.section.section--slider 
             .container
                 .swiper-container
@@ -98,10 +119,17 @@ block content
                         picture.section__img.parallax-img
                             source(srcset="img/main/3-sm.jpg" media="(max-width: 768px)")
                             source(srcset="img/main/3.jpg")
-                            img.section__img.parallax-img(src="img/main/3.jpg" alt="zense 3")
+                            img(src="img/main/3.jpg" alt="zense 3")
                     .section__text-col
                         .section__text-header
                             h2.section__title.title "So, how does it work?"  
+                                //- -var title = '"So, how does it work?"'.split(' ');
+                                //- each val in title   
+                                //-     span.word
+                                //-         -var letters = val.split('');
+                                //-         each val in letters
+                                //-             span.letter-overflow
+                                //-                 span.animated-letters= val
                             .section__text.text Halting female hair loss and growing beautifully strong and healthy hair is easy with Zense.
                         .section__text-scroll-outer
                             .section__text-scroll-inner
