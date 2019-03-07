@@ -13,8 +13,6 @@ prepend metas
     -var socVars = {type: 'some type', title: 'some title', descr: 'some dscr', img: 'some link'}
     +social(socVars)
 block content
-    //- PHONE
-    +phone(55555555)
     //- HEADER
     -var activeIndex = 1
     include ../common/layouts/_header
@@ -26,184 +24,6 @@ block content
                 .main-view__inner-wrap
                     h2.main-view__title.title Shop
                     ul.scroll-col__list#product-list
-
-                        //- //- 1
-
-                        //- li.scroll-col__item
-                        //-     .table__img-col
-                        //-         picture
-                        //-             source(srcset=`${startPath}img/shop/p1_576.jpg` media="(max-width: 576px)")
-                        //-             source(srcset=`${startPath}img/shop/p1_992.jpg` media="(max-width: 992px)")
-                        //-             source(srcset=`${startPath}img/shop/p1.jpg`)
-                        //-             img(srcset=`${startPath}img/shop/p1.jpg` alt="My default image")
-                        //-         //- img.response-img(src=`${startPath}img/shop/p1.jpg`)
-                        //-     .table__dscr-col
-                        //-         .info-dscr
-                        //-             span.info-dscr__close
-                        //-             .info-dscr__inner
-                        //-                 .info-dscr__scroller
-                        //-                     .info-dscr__col.info-dscr__col--left
-                        //-                         .info-dscr__title FAQ
-                        //-                         .info-dscr__text Pour your ACTIVATE Hair Growth Essence into your mixing bottle and add your favorite shampoo. Shake gently to mix well and massage into your hair gently every time you wash it.
-                        //-                         .info-dscr__text Pour your ACTIVATE Hair Growth Essence into your mixing bottle and add your favorite shampoo. Shake gently to mix well and massage into your hair gently every time you wash it.
-                        //-                         .info-dscr__text Pour your ACTIVATE Hair Growth Essence into your mixing bottle and add your favorite shampoo. Shake gently to mix well and massage into your hair gently every time you wash it.
-                        //-                         .info-dscr__text Pour your ACTIVATE Hair Growth Essence into your mixing bottle and add your favorite shampoo. Shake gently to mix well and massage into your hair gently every time you wash it.
-                        //-                     .info-dscr__col.info-dscr__col--right
-                        //-                         .info-dscr__title Ingridients
-                        //-                         ul.info-dscr__text
-                        //-                             li Lorem ipsum dolor sit amet.
-                        //-                             li Lorem ipsum dolor sit amet.
-                        //-                             li Lorem ipsum dolor sit amet.
-                        //-                             li Lorem ipsum dolor sit amet.
-                        //-                             li Lorem ipsum dolor sit amet.
-                        //-         .dscr-col__top
-                        //-             .table__col.table__col--left
-                        //-                 .table__title ACTIVATE Hair Growth Essence
-                        //-                 .table__content Pour your ACTIVATE Hair Growth Essence into your mixing bottle and add your favorite shampoo. Shake gently to mix well and massage into your hair gently every time you wash it.
-                        //-                 .table__content This essence soothes irritated and inflamed scalps, strengthens roots, and increases circulation to help promote new growth. Rinse thoroughly and follow with your regular conditioner.
-                        //-                 ul.table__more-list
-                        //-                     li.table__more-item.modal-triger(data-video-src="https://player.vimeo.com/video/183741782") Watch video
-                        //-                     li.table__more-item.info-triger FAQ
-                        //-                     li.table__more-item.info-triger Ingridients
-                        //-             .table__col.table__col--right
-                        //-                 .table__title Price
-                        //-                 .table__content <span>$35</span>
-                        //-         .btns-row
-                        //-             a.accent-btn(href="#" data-product-id="1714168365090") ORDER NOW
-                        //-             +counter('1714168365090')
-
-                        //- //- 2
-
-                        //- li.scroll-col__item
-                        //-     .table__img-col
-                        //-         picture
-                        //-             source(srcset=`${startPath}img/shop/p1_576.jpg` media="(max-width: 576px)")
-                        //-             source(srcset=`${startPath}img/shop/p1_992.jpg` media="(max-width: 992px)")
-                        //-             source(srcset=`${startPath}img/shop/p2.jpg`)
-                        //-             img(srcset=`${startPath}img/shop/p2.jpg` alt="My default image")
-                        //-         //- img.response-img(src=`${startPath}img/shop/p1.jpg`)
-                        //-     .table__dscr-col
-                        //-         .info-dscr
-                        //-             span.info-dscr__close
-                        //-             .info-dscr__inner
-                        //-                 .info-dscr__scroller
-                        //-                     .info-dscr__col.info-dscr__col--left
-                        //-                         .info-dscr__title FAQ
-                        //-                         .info-dscr__text Pour your ACTIVATE Hair Growth Essence into your mixing bottle and add your favorite shampoo. Shake gently to mix well and massage into your hair gently every time you wash it.
-                        //-                         .info-dscr__text Pour your ACTIVATE Hair Growth Essence into your mixing bottle and add your favorite shampoo. Shake gently to mix well and massage into your hair gently every time you wash it.
-                        //-                         .info-dscr__text Pour your ACTIVATE Hair Growth Essence into your mixing bottle and add your favorite shampoo. Shake gently to mix well and massage into your hair gently every time you wash it.
-                        //-                         .info-dscr__text Pour your ACTIVATE Hair Growth Essence into your mixing bottle and add your favorite shampoo. Shake gently to mix well and massage into your hair gently every time you wash it.
-                        //-                     .info-dscr__col.info-dscr__col--right
-                        //-                         .info-dscr__title Ingridients
-                        //-                         ul.info-dscr__text
-                        //-                             li Lorem ipsum dolor sit amet.
-                        //-                             li Lorem ipsum dolor sit amet.
-                        //-                             li Lorem ipsum dolor sit amet.
-                        //-                             li Lorem ipsum dolor sit amet.
-                        //-                             li Lorem ipsum dolor sit amet.
-                        //-         .dscr-col__top
-                        //-             .table__col.table__col--left
-                        //-                 .table__title AMPLIFY Scalp Nourishing Serum
-                        //-                 .table__content After gently towel-drying your hair, use the dropper from your AMPLIFY Scalp Nourishing Serum to disperse 10-20 drops along your hairline, your natural part, and thinning or balding patches. Then, work it into your hair roots gently with your fingertips.
-                        //-                 .table__content Your AMPLIFY Scalp Nourishing Serum works for a full 24 hours - stimulating your roots and follicles while nourishing them deeply for added strength and shine.
-                        //-                 .table__content For advanced results, use in combination with your AMPLIFY+ Scalp Conditioning SPA.
-                        //-                 ul.table__more-list
-                        //-                     li.table__more-item.modal-triger(data-video-src="https://player.vimeo.com/video/283927789") Watch video
-                        //-                     li.table__more-item.info-triger FAQ
-                        //-                     li.table__more-item.info-triger Ingridients
-                        //-             .table__col.table__col--right
-                        //-                 .table__title Price
-                        //-                 .table__content <span>$50</span>
-                        //-         .btns-row
-                        //-             a.accent-btn(href="#" data-product-id="1729242267682") ORDER NOW
-                        //-             +counter('1729242267682')
-
-                        //- //- 3
-
-                        //- li.scroll-col__item
-                        //-     .table__img-col
-                        //-         picture
-                        //-             source(srcset=`${startPath}img/shop/p1_576.jpg` media="(max-width: 576px)")
-                        //-             source(srcset=`${startPath}img/shop/p1_992.jpg` media="(max-width: 992px)")
-                        //-             source(srcset=`${startPath}img/shop/p3.jpg`)
-                        //-             img(srcset=`${startPath}img/shop/p3.jpg` alt="My default image")
-                        //-         //- img.response-img(src=`${startPath}img/shop/p1.jpg`)
-                        //-     .table__dscr-col
-                        //-         .info-dscr
-                        //-             span.info-dscr__close
-                        //-             .info-dscr__inner
-                        //-                 .info-dscr__scroller
-                        //-                     .info-dscr__col.info-dscr__col--left
-                        //-                         .info-dscr__title FAQ
-                        //-                         .info-dscr__text Pour your ACTIVATE Hair Growth Essence into your mixing bottle and add your favorite shampoo. Shake gently to mix well and massage into your hair gently every time you wash it.
-                        //-                         .info-dscr__text Pour your ACTIVATE Hair Growth Essence into your mixing bottle and add your favorite shampoo. Shake gently to mix well and massage into your hair gently every time you wash it.
-                        //-                         .info-dscr__text Pour your ACTIVATE Hair Growth Essence into your mixing bottle and add your favorite shampoo. Shake gently to mix well and massage into your hair gently every time you wash it.
-                        //-                         .info-dscr__text Pour your ACTIVATE Hair Growth Essence into your mixing bottle and add your favorite shampoo. Shake gently to mix well and massage into your hair gently every time you wash it.
-                        //-                     .info-dscr__col.info-dscr__col--right
-                        //-                         .info-dscr__title Ingridients
-                        //-                         ul.info-dscr__text
-                        //-                             li Lorem ipsum dolor sit amet.
-                        //-                             li Lorem ipsum dolor sit amet.
-                        //-                             li Lorem ipsum dolor sit amet.
-                        //-                             li Lorem ipsum dolor sit amet.
-                        //-                             li Lorem ipsum dolor sit amet.
-                        //-         .dscr-col__top
-                        //-             .table__col.table__col--left
-                        //-                 .table__title Amplify+ Scalp Conditioning SPA
-                        //-                 .table__content Using the dropper from your AMPLIFY Scalp Nourishing Serum, place 10-20 drops in the reservoir of your AMPLIFY+ Scalp Conditioning SPA comb and press the “Start” button. Comb your entire head softly for a few minutes until all serum has been dispersed.
-                        //-                 .table__content The combination of delicate infrared light and soothing vibrations encourages healthy cell and hair regeneration - for stronger, more luscious hair.
-                        //-                 ul.table__more-list
-                        //-                     li.table__more-item.modal-triger Watch video
-                        //-                     li.table__more-item.info-triger FAQ
-                        //-                     li.table__more-item.info-triger Ingridients
-                        //-             .table__col.table__col--right
-                        //-                 .table__title Price
-                        //-                 .table__content <span>$135</span>
-                        //-         .btns-row
-                        //-             a.accent-btn(href="#" data-product-id="1729244397602") ORDER NOW
-                        //-             +counter('1729244397602')
-
-                        //- //- 4
-
-                        //- li.scroll-col__item
-                        //-     .table__img-col
-                        //-         picture
-                        //-             source(srcset=`${startPath}img/shop/p1_576.jpg` media="(max-width: 576px)")
-                        //-             source(srcset=`${startPath}img/shop/p1_992.jpg` media="(max-width: 992px)")
-                        //-             source(srcset=`${startPath}img/shop/p4.jpg`)
-                        //-             img(srcset=`${startPath}img/shop/p4.jpg` alt="My default image")
-                        //-         //- img.response-img(src=`${startPath}img/shop/p1.jpg`)
-                        //-     .table__dscr-col
-                        //-         .info-dscr
-                        //-             span.info-dscr__close
-                        //-             .info-dscr__inner
-                        //-                 .info-dscr__scroller
-                        //-                     .info-dscr__col.info-dscr__col--left
-                        //-                         .info-dscr__title FAQ
-                        //-                         .info-dscr__text And for even better results, both inside and out, combine your above hair treatment with Zense’s NOURISH Advanced Hair Growth Formula.
-                        //-                     .info-dscr__col.info-dscr__col--right
-                        //-                         .info-dscr__title Ingridients
-                        //-                         ul.info-dscr__text
-                        //-                             li Lorem ipsum dolor sit amet.
-                        //-                             li Lorem ipsum dolor sit amet.
-                        //-                             li Lorem ipsum dolor sit amet.
-                        //-                             li Lorem ipsum dolor sit amet.
-                        //-                             li Lorem ipsum dolor sit amet.
-                        //-         .dscr-col__top
-                        //-             .table__col.table__col--left
-                        //-                 .table__title NOURISH Advanced Hair Growth Formula
-                        //-                 .table__content Using the dropper from your AMPLIFY Scalp Nourishing Serum, place 10-20 drops in the reservoir of your AMPLIFY+ Scalp Conditioning SPA comb and press the “Start” button. Comb your entire head softly for a few minutes until all serum has been dispersed.
-                        //-                 .table__content The combination of delicate infrared light and soothing vibrations encourages healthy cell and hair regeneration - for stronger, more luscious hair.
-                        //-                 ul.table__more-list
-                        //-                     li.table__more-item.modal-triger Watch video
-                        //-                     li.table__more-item.info-triger FAQ
-                        //-                     li.table__more-item.info-triger Ingridients
-                        //-             .table__col.table__col--right
-                        //-                 .table__title Price
-                        //-                 .table__content <span>$35</span>
-                        //-         .btns-row
-                        //-             a.accent-btn(href="#" data-product-id="1729245806626") ORDER NOW
-                        //-             +counter('1729245806626')
 
     // MAIN CONTENT - end
     // FOOTER
@@ -232,8 +52,8 @@ block templates
                     span.info-dscr__close
                     .info-dscr__inner
                         .info-dscr__scroller
-                            .info-dscr__title Ingridients
-                            ul.info-dscr__text(data-ingridients-list)
+                            .info-dscr__title Ingredients
+                            ul.info-dscr__text(data-ingredients-list)
                                 //- li 
                 .dscr-col__top
                     .table__col.table__col--left
@@ -243,7 +63,7 @@ block templates
                         ul.table__more-list
                             li.table__more-item.modal-triger(data-video-src="") Watch video
                             li.table__more-item.faq-triger FAQ
-                            li.table__more-item.ingrid-triger Ingridients
+                            li.table__more-item.ingrid-triger Ingredients
                     .table__col.table__col--right
                         .table__title Price
                         .table__content <span data-price></span>

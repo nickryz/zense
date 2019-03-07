@@ -4,7 +4,7 @@ export default class Counter {
         this.incrementBtn = counter.querySelector('.increment');
         this.decrementBtn = counter.querySelector('.decrement');
         this.input = counter.querySelector('input');
-        this.activeVal = 0;
+        this.activeVal = 1;
 
         // Init
         this._init()
@@ -36,7 +36,7 @@ export default class Counter {
 
     _checkMinusValue(newValue) {
 
-        if(newValue >= 0) {
+        if(newValue >= 1) {
             return newValue
         } else {
             return this.activeVal;

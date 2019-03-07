@@ -31,4 +31,9 @@
             // color: lighten($darkFont, 10%);
         }
     }
+
+    &.disable {
+        pointer-events: none;
+        opacity: 0.4;
+    }
 }

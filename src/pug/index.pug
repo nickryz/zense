@@ -2,15 +2,7 @@
 //- TEMPLATE
 extends common/layouts/_layout
 
-prepend metas
-    meta(name="description" content='zense')
-    meta(name="keywords" content='some keyw')
-    //- social prev-s
-    -var socVars = {type: 'some type', title: 'some title', descr: 'some dscr', img: 'some link'}
-    +social(socVars)
 block content
-    //- PHONE
-    +phone(55555555)
     //- HEADER
     //- -var activeIndex = 1
     include common/layouts/_header
@@ -29,7 +21,7 @@ block content
                         //-         each val in letters
                         //-             span.letter-overflow
                         //-                 span.animated-letters= val
-                    p.text.top-section__text Zense’s organic treatments encourage new hair growth and help you naturally restore your hair’s original beauty, strength, and thickness in as little as 3 weeks. Without lasers.
+                    p.text.top-section__text Zense’s organic treatments encourage new hair growth and help you naturally restore your hair’s original beauty, strength, and thickness in as little as 30 days. Without lasers.
                     +hover-btn('#learn-more', 'Learn more')(class='scroll-triger')
         section.section.section--1#learn-more
             .container
@@ -39,6 +31,7 @@ block content
                             .section__lay.parallax-lay
                             picture.section__img.parallax-img
                                 source(srcset=`${startPath}img/main/1-sm.jpg` media="(max-width: 768px)")
+                                source(srcset=`${startPath}img/main/1-md.jpg` media="(max-width: 992px)")
                                 source(srcset=`${startPath}img/main/1.jpg`)
                                 img(src="img/main/1.jpg" alt="zense 1")
                     .section__text-col
@@ -72,8 +65,9 @@ block content
                     .section__img-col
                         .section__inner-lay
                             picture.section__img.parallax-img
-                                source(srcset="img/main/2-sm.jpg" media="(max-width: 768px)")
-                                source(srcset="img/main/2.jpg")
+                                source(srcset=`${startPath}img/main/2-sm.jpg` media="(max-width: 768px)")
+                                source(srcset=`${startPath}img/main/2-md.jpg` media="(max-width: 992px)")
+                                source(srcset=`${startPath}img/main/2.jpg`)
                                 img(src="img/main/2.jpg" alt="zense 2")
         section.section.section--slider 
             .container
@@ -117,8 +111,9 @@ block content
                 .section__inner-wrap#fixed-img1
                     .section__img-col
                         picture.section__img.parallax-img
-                            source(srcset="img/main/3-sm.jpg" media="(max-width: 768px)")
-                            source(srcset="img/main/3.jpg")
+                            source(srcset=`${startPath}img/main/3-sm.jpg` media="(max-width: 768px)")
+                            source(srcset=`${startPath}img/main/3-md.jpg` media="(max-width: 992px)")
+                            source(srcset=`${startPath}img/main/3.jpg`)
                             img(src="img/main/3.jpg" alt="zense 3")
                     .section__text-col
                         .section__text-header
@@ -146,7 +141,7 @@ block content
                                 .section__text.text The combination of delicate infrared light and soothing vibrations encourages healthy cell and hair regeneration - for stronger, more luscious hair.
                                 .section__text.text.bold And for even better results, both inside and out, combine your above hair treatment with Zense’s NOURISH Advanced Hair Growth Formula.
                                 .section__text.text.bold Just taking 2 of the antioxidant and vitamin-packed capsules once a day will help replenish the minerals your body needs to help grow strong and healthy hair.
-                                .section__text.title.title--sm.accent By following these simple steps, in just 3 weeks you'll be amazed at the difference in your hair's thickness, shine, and volume.
+                                .section__text.title.title--sm.accent By following these simple steps, in just 30 days you'll be amazed at the difference in your hair's thickness, shine, and volume.
 
     // MAIN CONTENT - end
     // FOOTER

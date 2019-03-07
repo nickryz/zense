@@ -16,18 +16,27 @@ html(lang="en")
     head
         //- you can add start var's or change it
         block startOpt
+        -var mainJs = `${startPath}js/main.min.js`;
         meta(charset="UTF-8")
         meta(name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no")
         meta(http-equiv="X-UA-Compatible" content="ie=edge")
-        meta(name="author" content='author name')
-        block metas
+        //- meta(name="author" content='author name')
         block title
             title Zense
+        block metas
+            meta(name="description" content='Zense’s organic treatments encourage new hair growth and help you naturally restore your hair’s original beauty, strength, and thickness in as little as 30 days. Without lasers.')
+            meta(name="keywords" content='zense, hair')
+            //- social prev-s
+            -var socVars = {type: 'Store', title: 'Zense', descr: 'Zense’s organic treatments encourage new hair growth and help you naturally restore your hair’s original beauty, strength, and thickness in as little as 30 days. Without lasers.', image: `${startPath}img/prev.jpg`}
+            +social(socVars)
         block preload
             -var mainStyle = `${startPath}css/main.min.css`;
             link(rel='preload' href=mainStyle as="style")
+            link(rel='preload' href=mainJs as="script")
         block fav
             link(rel="shortcut icon" href=`${startPath}img/favicon.ico` type="image/x-icon")
+            link(rel="icon" type="image/png" href=`${startPath}img/favicon-32x32.png` sizes="32x32")
+            link(rel="icon" type="image/png" href=`${startPath}img/favicon-16x16.png` sizes="16x16")
         block fonts
             // FONTS
         block styles
@@ -49,7 +58,15 @@ html(lang="en")
         block scripts
             // SCRIPTS
             //- JS
-            -var mainJs = `${startPath}js/main.min.js`;
+          
             script(src=mainJs)
         
+            //- CHAT
+            script(type="text/javascript").
+                window.__lc = window.__lc || {};
+                window.__lc.license = 10683762;
+                (function(){var lc = document.createElement('script');lc.type = 'text/javascript'; lc.async = true; lc.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'cdn.livechatinc.com/tracking.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(lc, s);})();
+            noscript
+                a(href="https://www.livechatinc.com/chat-with/10683762/" rel="nofollow") Chat with us, powered by 
+                    a(href="https://www.livechatinc.com/?welcome" rel="noopener nofollow" target="_blank") LiveChat
         block templates

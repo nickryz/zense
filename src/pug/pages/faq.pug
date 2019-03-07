@@ -1,0 +1,155 @@
+
+//- TEMPLATE
+
+extends ../common/layouts/_layout
+
+block startOpt
+    -startPath = '../'; 
+    -pageId = 'faq';   
+prepend metas
+    meta(name="description" content='some dscr')
+    meta(name="keywords" content='some keyw')
+    //- social prev-s
+    -var socVars = {type: 'some type', title: 'some title', descr: 'some dscr', img: 'some link'}
+    +social(socVars)
+block content
+    //- HEADER
+    -var activeIndex = 3
+    include ../common/layouts/_header
+    //- MAIN CONTENT
+    // MAIN CONTENT
+    main.main
+        .faq-section
+            .container
+                h2.faq-section__title Here you’ll find answers to our most frequently asked questions. Can’t find what you’re looking for? Simply send us a quick email to <a href="mailto:support@thezense.com">support@thezense.com</a> and you’ll receive a reply within 1-2 business days.
+                -
+                    var faqContent = [ 
+                        {
+                            question: "I dye my hair/have treated hair. Can I still use Zense?",
+                            ansvers: [
+                                "Yes of course! While we all enjoy styling our hair, many treatments and artificial products can deeply damage our hair, causing it to frizz, break easily, and lose its natural shine. Some treatments, such as chemical perms and straighteners, are so strong they can also cause excess shedding, hair thinning, and even hair loss.",
+                                "Zense’s products revitalize, deeply nourish, and strengthen your hair from root to tip, giving you back fuller, thicker, and glossier hair—no matter how you dye, style, or treat it."
+                            ]
+                        },
+                        {
+                            question: "I have sensitive skin. Will Zense work for me?",
+                            ansvers: [
+                                "Yes, you should still be able to use Zense without any reactions. However, if you have known allergies to any of our ingredients (you can view our complete list of ingredients <a href='#'>here</a>) then we do not recommend you use Zense.",
+                                "If you are unsure, we recommend you test the products first, as you would any other cosmetic or hair care product.",
+                                "For ACTIVATE Hair Growth Essence: mix a couple of drops with take 1 teaspoon of your normal shampoo and dab this mixture on your wrist, or behind your knee. If you don’t get a reaction within 24 hours, then you can use Zense’s products normally.",
+                                "For AMPLIFY Scalp Nourishing Serum: apply 2-3 drops to your wrist, or behind your knee and blend in. If you do not see a reaction within 24 hours, you can use it normally."
+                            ]
+                        },           
+                        {
+                            question: "Are Zense’s products suitable for all hair types?",
+                            ansvers: [
+                                "Yes. Every single product in our range has been formulated to work with multiple hair types, from tightly curly tresses to naturally straight hair.",
+                            ]
+                        },           
+                        {
+                            question: "Can I use Zense every single day?",
+                            ansvers: [
+                                "Yes, Zense is meant to be used every single day so you can achieve wonderful results as soon as possible.",
+                            ]
+                        },           
+                        {
+                            question: "How long does each product last for?",
+                            ansvers: [
+                                "Each bottle contains enough product to last you for 30 days, with regular use (once per day).",
+                            ]
+                        },           
+                        {
+                            question: "Are your products organic?",
+                            ansvers: [
+                                "Yes! Every single item in our product range is based on organic essences and extracts, and do not contain any harsh chemicals or “filler” ingredients.",
+                            ]
+                        },
+                        {
+                            question: "Do you test on animals?",
+                            ansvers: [
+                                "Absolutely not! We are firmly against animal testing and all our products are 100% cruelty-free."
+                            ]
+                        },              
+                        {
+                            question: "How can I place an order?",
+                            ansvers: [
+                                "To place an order, simply click on the product/s you wish to purchase, and they will be automatically added to your cart.",
+                                "When you are finished shopping, click the “Buy Now” button and a personal account will be automatically generated for you when you sign in with either your Google or Facebook account.",
+                                "Check over your details to ensure they are accurate, and then click on the “Confirm Purchase” button.",
+                                "You then will be taken to a secure checkout page to complete your purchase, and be on the fast track to enjoying stronger, fuller, and healthier hair!",
+                            ]
+                        },              
+                        {
+                            question: "How long will it take for my order to be processed?",
+                            ansvers: [
+                                "Your payment will be confirmed and order will be processed within 2 business days of placing it.",
+                            ]
+                        },              
+                        {
+                            question: "When will I receive my order?",
+                            ansvers: [
+                                "97% of all orders are delivered within 15 business days. For more information on shipping times, please check the Standard Shipping Times chart on your checkout page.",
+                            ]
+                        },              
+                        {
+                            question: "How much does shipping & handling cost?",
+                            ansvers: [
+                                "Normal shipping and handling costs $9.95 USD to anywhere in the world. However, if your purchase total is above $80.00 USD your products will be shipped to you free. If you qualify for free shipping and handling, it will be automatically applied to your order during checkout.",
+                            ]
+                        },              
+                        {
+                            question: "Can I track my order?",
+                            ansvers: [
+                                "Yes, we will provide you with a tracking number for your order as soon as it is despatched.",
+                                "Sometimes, events may happen that are beyond our control. There may be international or local postal delays, an incorrect delivery address was supplied, or the local postal service may not leave a note for you to collect your package.",
+                                "If you have difficulty tracking your package, please send us an email to <a href='mailto:support@thezense.com'>support@thezense.com</a> and we will investigate for you.",
+                            ]
+                        },              
+                        {
+                            question: "I’m concerned about my security online. How safe is my personal information?",
+                            ansvers: [
+                                "Thezense.com adheres to the highest industry standards to protect your personal information at all times.",
+                                "Our store uses SSL with industry-standard 256-bit encryption technology. This is the exact same level of encryption used by multinational banks to ensure your information remains safe and secure.",
+                                "Your payment information is only used to complete the requested transaction and is not stored in any shape or form.",
+                            ]
+                        },              
+                        {
+                            question: "How can I pay for my products?",
+                            ansvers: [
+                                "We accept Visa, Mastercard, American Express, and PayPal. There are no additional charges for using a credit card, and every purchase is protected by the individual payment processor as well as by our 30 day money back guarantee.",
+                            ]
+                        },              
+                        {
+                            question: "What if I want a refund?",
+                            ansvers: [
+                                "We offer all our customers a 30-day money back guarantee. If you feel you do not see a noticeable improvement in your hair’s strength or thickness or do not notice new hair growth, please send us an email immediately to <a href='mailto:support@thezense.com'>support@thezense.com</a>",
+                                "We will review your refund request, along with your “before” and “after” photos and send you a confirmation email of your refund. Your refund will be credited (less shipping and handling) to the same payment method you used to purchase your products.",
+                                "Please be aware that while we honor refunds immediately, your bank or payment processor may have different processing times that are beyond our control.",
+                            ]
+                        },              
+                        {
+                            question: "What if I have an allergic reaction?",
+                            ansvers: [
+                                "We take your satisfaction seriously, and in the event you have an allergic reaction, please email us immediately at <a href='mailto:support@thezense.com'>support@thezense.com</a> and we will send you instructions for returning your products.",
+                                "As soon as we receive your products we will send you a confirmation email and immediately refund you (less shipping and handling) via the same payment method you used to purchase your products.",
+                                "As mentioned above, please be aware that while we honor refunds immediately, your payment processor or bank may have different processing times that are beyond our control.",
+                            ]
+                        }              
+                    ]                   
+                        
+                ul.faq__list
+                    each cont, i in faqContent
+                        li.faq__item
+                            input.faq__input(type="checkbox" id=`q${i+1}`)
+                            label.faq__label(for=`q${i+1}`) #{cont.question}
+                            .faq__content-box
+                                each answer in cont.ansvers
+                                    p.text !{answer}
+
+
+    // MAIN CONTENT - end
+    // FOOTER
+    -var footerFull = true;
+    -var actionText = 'Get naturally stronger, healthier hair in as little as 30 days with Zense'
+    include ../common/layouts/_footer
+    // FOOTER - end

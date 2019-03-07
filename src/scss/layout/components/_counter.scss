@@ -25,7 +25,7 @@
     .counter-input {
         padding: 20px;
         display: flex;
-       text-align: center;
+        text-align: center;
         width: 33.3333%;
         outline: none;
         border: 0;
@@ -33,5 +33,10 @@
         border-left: 1px solid #6F6E6E; 
         background: inherit;
         font-family: $mainFont;
+        font-size: calc(10px + (16 - 10) * ((100vw - 480px) / (1440 - 480)));
+
+        @include mobile-pr {
+            font-size: 14px;
+        }
     }
 }

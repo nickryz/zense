@@ -299,7 +299,12 @@ function init () {
                     dscrBox.appendChild(dscrP);
                 }
                 // video link
-                productItem.querySelector('[data-video-src]').setAttribute('data-video-src', products[product].videosrc);
+                let videoTriger = productItem.querySelector('[data-video-src]');
+                if(products[product].videosrc) {
+                    videoTriger.setAttribute('data-video-src', products[product].videosrc);
+                } else {
+                    videoTriger.parentElement.removeChild(videoTriger)
+                }
                 // price
                 productItem.querySelector('[data-price]').innerHTML = products[product].currency + products[product].price;
                 // product ID (add to cart btn)
@@ -308,26 +313,49 @@ function init () {
                 productItem.querySelector('.counter-input').setAttribute('id', product);
                 // faq text
                 let faqBox = productItem.querySelector('[data-faq-box]')
-                for(let i = 0; i < products[product].faq.length; ++i) {
-                    let faqP = document.createElement('div');
-                        faqP.classList.add('info-dscr__text');
-                        faqP.innerHTML = products[product].faq[i];
-                    faqBox.appendChild(faqP);
+                if(products[product].faq) {
+                    for(let i = 0; i < products[product].faq.length; ++i) {
+                        let faqTitle = document.createElement('div');
+                            faqTitle.classList.add('info-dscr__text', 'bold');
+                            faqTitle.innerHTML = products[product].faq[i].quest;
+                        faqBox.appendChild(faqTitle);
+    
+                        let answersList = products[product].faq[i].answer;
+                        if(answersList) {
+                            for(let t = 0; t < answersList.length; ++t) {
+                                let faqP = document.createElement('div');
+                                    faqP.classList.add('info-dscr__text');
+                                    faqP.innerHTML = answersList[t];
+                                faqBox.appendChild(faqP);
+                            }
+                        }
+                            
+                    }
                 }
-                // ingridients list
-                let ingriBox = productItem.querySelector('[data-ingridients-list]')
-                for(let i = 0; i < products[product].ingridients.length; ++i) {
-                    let ingriP = document.createElement('li');
-                        // ingri.classList.add('info-dscr__text');
-                        ingriP.innerHTML = products[product].ingridients[i];
-                    ingriBox.appendChild(ingriP);
+                // ingredients list
+                let ingriBox = productItem.querySelector('[data-ingredients-list]')
+                if(products[product].ingredients) {
+                    for(let i = 0; i < products[product].ingredients.length; ++i) {
+                        let ingriP = document.createElement('li');
+                            // ingri.classList.add('info-dscr__text');
+                            ingriP.innerHTML = products[product].ingredients[i];
+                        ingriBox.appendChild(ingriP);
+                    }
+                } else {
+                    let triger = productItem.querySelector('.ingrid-triger');
+                    triger.parentElement.removeChild(triger)
                 }
                 // images
                 productItem.querySelector('[media="(max-width: 576px)"]').setAttribute('srcset', root + products[product].images.sm);
                 productItem.querySelector('[media="(max-width: 992px)"]').setAttribute('srcset', root + products[product].images.md);
                 productItem.querySelector('[data-img-origin]').setAttribute('srcset', root + products[product].images.lg);
                 productItem.querySelector('[data-img-default]').setAttribute('srcset', root + products[product].images.default);
-
+                // btn status
+                if(!products[product].isAvailable) {
+                    let btn = productItem.querySelector('.accent-btn');
+                        btn.innerHTML = 'OUT OF STOCK'
+                        btn.classList.add('disable');
+                }
                 // set in list
                 productList.appendChild(productItem)
         }
@@ -425,14 +453,12 @@ function init () {
             for (let product in ordersList) {
                 sum += ordersList[product];
             } 
-            
             if(sum > 0) {
-                
                 if(container.classList.contains('active')) {
-                    container.innerHTML = sum;
+                    container.innerHTML = ((sum + '').length > 2) ? "$" : sum;
                 } else {
                     let addQty = function() {
-                        container.innerHTML = sum;
+                        container.innerHTML = ((sum + '').length > 2) ? "$" : sum;
                         container.removeEventListener('transitionend', addQty)
                     }   
                     
@@ -523,7 +549,7 @@ function onLoad() {
                         .fromTo(".section--1 .parallax-img", 0.3, {scale: 0.8, y: (wW < mobileLs) ? 0 : '-50%'}, {scale: 1, y: (wW < mobileLs) ? 0 : '-50%', ease: Power0.easeNone}, 0)
                 return new ScrollMagic.Scene({
                     triggerElement: section1, 
-                    duration: section1.clientHeight / 2
+                    duration: (wW < mobileLs) ? 0 : section1.clientHeight / 2
                 })
                 .setTween(tween)
                 .addTo(controller);
@@ -538,7 +564,7 @@ function onLoad() {
                     .fromTo(".section--2 .parallax-img", 0.3, {scale: 0.8}, {scale: 1,ease: Power0.easeNone}, 0)
                 return new ScrollMagic.Scene({
                     triggerElement: section2, 
-                    duration: section2.clientHeight/2
+                    duration: (wW < mobileLs) ? 0 : section2.clientHeight / 2
                 })
                 .setTween(tween)
                 .addTo(controller);
@@ -580,7 +606,7 @@ function onLoad() {
                         .fromTo(".section--3 .parallax-img", 0.3, {scale: 0.8}, {scale: 1, ease: Power0.easeNone}, 0)
                 return new ScrollMagic.Scene({
                     triggerElement: (wW < mobileLs) ? ".section--3 .parallax-img" : section3, 
-                    duration: (wW < mobileLs) ? 0 : section3.clientHeight / 4
+                    duration: (wW < mobileLs) ? 0 : section3.clientHeight / 2
                 })
                 .setTween(tween)
                 .addTo(controller);
@@ -738,7 +764,6 @@ function onLoad() {
             setInterval(()=>{
                 if(isScrolling && !isScrollFromWheel) {
                     isScrolling = false;
-                    console.log('LAG')
                     scrollTop = window.pageYOffset || document.documentElement.scrollTop;
                 }
             }, 750)

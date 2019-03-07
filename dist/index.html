@@ -4,20 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="author" content="author name">
-    <meta name="description" content="zense">
-    <meta name="keywords" content="some keyw">
-    <meta property="og:type" content="some type"/>
-    <meta property="og:title" content="some title"/>
-    <meta property="og:description" content="some dscr"/>
-    <meta property="og:image"/>
-    <meta property="twitter:card" content="summary"/>
-    <meta property="twitter:title" content="some title"/>
-    <meta property="twitter:description" content="some dscr"/>
-    <meta property="twitter:image"/>
     <title>Zense</title>
+    <meta name="description" content="Zense’s organic treatments encourage new hair growth and help you naturally restore your hair’s original beauty, strength, and thickness in as little as 30 days. Without lasers.">
+    <meta name="keywords" content="zense, hair">
+    <meta property="og:type" content="Store"/>
+    <meta property="og:title" content="Zense"/>
+    <meta property="og:description" content="Zense’s organic treatments encourage new hair growth and help you naturally restore your hair’s original beauty, strength, and thickness in as little as 30 days. Without lasers."/>
+    <meta property="og:image" content="./img/prev.jpg"/>
+    <meta property="twitter:card" content="summary"/>
+    <meta property="twitter:title" content="Zense"/>
+    <meta property="twitter:description" content="Zense’s organic treatments encourage new hair growth and help you naturally restore your hair’s original beauty, strength, and thickness in as little as 30 days. Without lasers."/>
+    <meta property="twitter:image" content="./img/prev.jpg"/>
     <link rel="preload" href="./css/main.min.css" as="style">
+    <link rel="preload" href="./js/main.min.js" as="script">
     <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" href="./img/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="./img/favicon-16x16.png" sizes="16x16">
     <!-- FONTS-->
     <!-- STYLES-->
     <link rel="stylesheet" href="./css/main.min.css">
@@ -25,8 +27,7 @@
   <body data-pageid="home">
     <div id="preloader">
       <div class="logo-wrap"></div>
-    </div><a class="calling-wrap" href="tel:55555555" title="to call">
-      <div class="calling"></div></a>
+    </div>
     <!-- HEADER-->
     <header class="header" id="main-header">
       <div class="container">
@@ -36,6 +37,7 @@
             <ul class="main-nav__list">
               <li class="main-nav__item"><a class="main-nav__link" href="./pages/shop.html">Shop</a></li>
               <li class="main-nav__item"><a class="main-nav__link" href="./pages/about.html">About</a></li>
+              <li class="main-nav__item"><a class="main-nav__link" href="./pages/faq.html">FAQ</a></li>
               <li class="main-nav__item"><a class="main-nav__link" href="./pages/contact.html">Contact</a></li>
               <li class="main-nav__item"><a class="main-nav__link" href="./pages/orders.html">My orders
                   <div class="dot" id="dot"></div></a></li>
@@ -53,7 +55,7 @@
         <div class="container">
           <div class="top-section__dscr">
             <h1 class="title top-section__title">For hair like in your 20s in your 40s, 50s & beyond</h1>
-            <p class="text top-section__text">Zense’s organic treatments encourage new hair growth and help you naturally restore your hair’s original beauty, strength, and thickness in as little as 3 weeks. Without lasers.</p><a class="hover-btn scroll-triger" href="#learn-more">
+            <p class="text top-section__text">Zense’s organic treatments encourage new hair growth and help you naturally restore your hair’s original beauty, strength, and thickness in as little as 30 days. Without lasers.</p><a class="hover-btn scroll-triger" href="#learn-more">
               <div class="hover-btn__inner-wrap">
                 <div class="text-link">Learn more</div>
               </div></a>
@@ -68,6 +70,7 @@
                 <div class="section__lay parallax-lay"></div>
                 <picture class="section__img parallax-img">
                   <source srcset="./img/main/1-sm.jpg" media="(max-width: 768px)">
+                  <source srcset="./img/main/1-md.jpg" media="(max-width: 992px)">
                   <source srcset="./img/main/1.jpg"><img src="img/main/1.jpg" alt="zense 1">
                 </picture>
               </div>
@@ -98,8 +101,9 @@
             <div class="section__img-col">
               <div class="section__inner-lay">
                 <picture class="section__img parallax-img">
-                  <source srcset="img/main/2-sm.jpg" media="(max-width: 768px)">
-                  <source srcset="img/main/2.jpg"><img src="img/main/2.jpg" alt="zense 2">
+                  <source srcset="./img/main/2-sm.jpg" media="(max-width: 768px)">
+                  <source srcset="./img/main/2-md.jpg" media="(max-width: 992px)">
+                  <source srcset="./img/main/2.jpg"><img src="img/main/2.jpg" alt="zense 2">
                 </picture>
               </div>
             </div>
@@ -159,8 +163,9 @@
           <div class="section__inner-wrap" id="fixed-img1">
             <div class="section__img-col">
               <picture class="section__img parallax-img">
-                <source srcset="img/main/3-sm.jpg" media="(max-width: 768px)">
-                <source srcset="img/main/3.jpg"><img src="img/main/3.jpg" alt="zense 3">
+                <source srcset="./img/main/3-sm.jpg" media="(max-width: 768px)">
+                <source srcset="./img/main/3-md.jpg" media="(max-width: 992px)">
+                <source srcset="./img/main/3.jpg"><img src="img/main/3.jpg" alt="zense 3">
               </picture>
             </div>
             <div class="section__text-col">
@@ -183,7 +188,7 @@
                   <div class="section__text text">The combination of delicate infrared light and soothing vibrations encourages healthy cell and hair regeneration - for stronger, more luscious hair.</div>
                   <div class="section__text text bold">And for even better results, both inside and out, combine your above hair treatment with Zense’s NOURISH Advanced Hair Growth Formula.</div>
                   <div class="section__text text bold">Just taking 2 of the antioxidant and vitamin-packed capsules once a day will help replenish the minerals your body needs to help grow strong and healthy hair.</div>
-                  <div class="section__text title title--sm accent">By following these simple steps, in just 3 weeks you'll be amazed at the difference in your hair's thickness, shine, and volume.</div>
+                  <div class="section__text title title--sm accent">By following these simple steps, in just 30 days you'll be amazed at the difference in your hair's thickness, shine, and volume.</div>
                 </div>
               </div>
             </div>
@@ -199,7 +204,7 @@
           <h2 class="main-footer__title title">Say &quot;Bye-bye&quot; to receding hairlines, pixie cuts, and volumizers - and &quot;Hello!&quot; to stronger, healthier, new hair with Zense.</h2><a class="accent-btn" href=".//pages/shop.html">ORDER NOW</a>
         </div>
         <div class="main-footer__copyright-row"><a class="main-footer__logo" href="/"><img src="./img/logo.svg"></a>
-          <div class="text bold">Copyright © 2018 ZENSE.</div>
+          <div class="text bold">Copyright © 2019 ZENSE.</div>
           <div class="text">Powered by: <a class="bold" href="https://purpleadlab.com">PurpleAdLab  </a></div>
         </div>
       </div>
@@ -207,5 +212,11 @@
     <!-- FOOTER - end-->
     <!-- SCRIPTS-->
     <script src="./js/main.min.js"></script>
+    <script type="text/javascript">
+      window.__lc = window.__lc || {};
+      window.__lc.license = 10683762;
+      (function(){var lc = document.createElement('script');lc.type = 'text/javascript'; lc.async = true; lc.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'cdn.livechatinc.com/tracking.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(lc, s);})();
+    </script>
+    <noscript><a href="https://www.livechatinc.com/chat-with/10683762/" rel="nofollow">Chat with us, powered by <a href="https://www.livechatinc.com/?welcome" rel="noopener nofollow" target="_blank">LiveChat</a></a></noscript>
   </body>
 </html>

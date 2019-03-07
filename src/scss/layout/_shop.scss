@@ -362,7 +362,7 @@
     padding: 0;
     margin: 40px 0 0;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
 
     @include tablet-ls {
@@ -379,14 +379,14 @@
     font-weight: 700;
     color: $accentColor;
     font-size: calc(12px + (14 - 12)*((100vw - 480px)/(1440 - 480)));
-    margin-right: 20px;
+    margin-right: 50px;
     cursor: pointer;
 
     &:last-child {
         margin-right: 0;
     }
 
-    &:nth-child(1) {
+    &[data-video-src] {
         position: relative;
         padding-left: 26px;
 
