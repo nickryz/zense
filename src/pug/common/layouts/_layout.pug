@@ -51,6 +51,10 @@ html(lang="en")
         block preloader
             #preloader
                 .logo-wrap
+                    -let n = 0;
+                    while (n < 7)
+                        .dot
+                        - ++n
 
         block content
 

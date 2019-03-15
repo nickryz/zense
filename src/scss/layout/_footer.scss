@@ -68,6 +68,7 @@
 
         .text {
             margin-bottom: 0;
+            font-size: calc(8px + (12 - 8) * ((100vw - 480px) / (1440 - 480)));
 
             @include mobile-ls {
                 margin-bottom: 20px;

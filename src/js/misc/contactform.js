@@ -140,10 +140,8 @@ export default class ContactForm {
         
         let xhr = new XMLHttpRequest();
         let paramsStr = 'name=' + params.name + '&email=' + params.phone + '&phone=' + params.mail + '&text=' + params.text;
-
-        xhr.onreadystatechange = function () {
+        xhr.onreadystatechange = () => {
             if (xhr.readyState == 4 && xhr.status == 200) {
-                console.log('sended')
                 this._clearInputs();
                 this._toggleMessage('Thank\'s! We will contact with you as soon as posible');
             }
