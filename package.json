@@ -16,7 +16,7 @@
     "beerslider": "^1.0.3",
     "browser-sync": "^2.26.3",
     "custombox": "^4.0.3",
-    "gsap": "^2.0.2",
+    "gsap": "^3.6.0",
     "gulp-autoprefixer": "^6.0.0",
     "gulp-babel": "^8.0.0",
     "gulp-browserify": "^0.5.1",
