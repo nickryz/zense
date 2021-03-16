@@ -33,10 +33,26 @@
     <!-- FONTS-->
     <!-- STYLES-->
     <link rel="stylesheet" href="../css/main.min.css">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-125459388-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-125459388-1');
+    </script>
   </head>
   <body data-pageid="shop">
     <div id="preloader">
-      <div class="logo-wrap"></div>
+      <div class="logo-wrap">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
     </div>
     <!-- HEADER-->
     <header class="header" id="main-header">
@@ -73,9 +89,15 @@
     <!-- FOOTER-->
     <footer class="main-footer">
       <div class="container">
-        <div class="main-footer__copyright-row"><a class="main-footer__logo" href="/"><img src="../img/logo.svg"></a>
+        <div class="main-footer__copyright-row"><a class="main-footer__logo" href="../"><img src="../img/logo.svg"></a>
+          <nav class="main-footer__nav">
+            <ul class="main-footer__nav-list">
+              <li class="main-footer__nav-item"><a class="main-footer__nav-link text" href="#">Privacy policy</a></li>
+              <li class="main-footer__nav-item"><a class="main-footer__nav-link text" href="#">Return policy</a></li>
+              <li class="main-footer__nav-item"><a class="main-footer__nav-link text" href="#">Terms of service</a></li>
+            </ul>
+          </nav>
           <div class="text bold">Copyright © 2019 ZENSE.</div>
-          <div class="text">Powered by: <a class="bold" href="https://purpleadlab.com">PurpleAdLab  </a></div>
         </div>
       </div>
     </footer>
@@ -113,6 +135,15 @@
               <div class="info-dscr__scroller">
                 <div class="info-dscr__title">Ingredients</div>
                 <ul class="info-dscr__text" data-ingredients-list></ul>
+              </div>
+            </div>
+          </div>
+          <div class="info-dscr message" data-message>
+            <div class="info-dscr__inner">
+              <div class="info-dscr__scroller">
+                <div class="info-dscr__text">Thank you!</div>
+                <div class="info-dscr__text">Item added to cart.</div>
+                <div class="btns-row"><a class="accent-btn simple continue" href="#">CONTINUE SHOPPING</a><a class="accent-btn" href="../pages/orders.html">PROCEED TO CHECKOUT</a></div>
               </div>
             </div>
           </div>

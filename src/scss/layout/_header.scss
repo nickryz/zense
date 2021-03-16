@@ -160,6 +160,11 @@
         margin-left: 0;
         margin-bottom: 50px;
      }
+
+    @include mobile-pr {
+        margin-left: 0;
+        margin-bottom: 20px;
+     }
 }
 .main-nav__link {
     text-decoration: none;

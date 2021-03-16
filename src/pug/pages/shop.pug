@@ -55,6 +55,15 @@ block templates
                             .info-dscr__title Ingredients
                             ul.info-dscr__text(data-ingredients-list)
                                 //- li 
+                .info-dscr.message(data-message)
+                    //- span.info-dscr__close
+                    .info-dscr__inner
+                        .info-dscr__scroller
+                            .info-dscr__text Thank you!
+                            .info-dscr__text Item added to cart.
+                            .btns-row
+                                a.accent-btn.simple.continue(href=`#`) CONTINUE SHOPPING
+                                a.accent-btn(href=`${startPath}pages/orders.html`) PROCEED TO CHECKOUT
                 .dscr-col__top
                     .table__col.table__col--left
                         .table__title(data-title) 

@@ -43,7 +43,13 @@ html(lang="en")
             // STYLES
             //- CSS
             link(rel="stylesheet" href=mainStyle)
-
+        // Global site tag (gtag.js) - Google Analytics 
+        script(async src="https://www.googletagmanager.com/gtag/js?id=UA-125459388-1")
+        script.
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'UA-125459388-1');
     body(data-pageid=`${pageId}`)
         //- #round
         //- #wrap
@@ -51,6 +57,10 @@ html(lang="en")
         block preloader
             #preloader
                 .logo-wrap
+                    -let n = 0;
+                    while (n < 7)
+                        .dot
+                        - ++n
 
         block content
 

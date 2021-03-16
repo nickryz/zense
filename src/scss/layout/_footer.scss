@@ -68,6 +68,7 @@
 
         .text {
             margin-bottom: 0;
+            font-size: calc(8px + (12 - 8) * ((100vw - 480px) / (1440 - 480)));
 
             @include mobile-ls {
                 margin-bottom: 20px;
@@ -81,4 +82,22 @@
                 margin-left: 0;
               }
         }
+
+        .main-footer__nav-list {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            padding: 0;
+            margin: 0;
+
+            @include mobile-ls {
+               flex-direction: column;
+               margin-bottom: 15px;
+              }
+        }
+            .main-footer__nav-item {
+            }
+                .main-footer__nav-link {
+                    text-decoration: none;
+                }
     }

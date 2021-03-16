@@ -130,3 +130,33 @@
         
     }
 }
+
+// slider (before/after)
+.slider {
+    padding: 75px 0;
+
+    @include mobile-pr {
+        padding: 45px 0;
+    }
+}
+.sliders-container {
+    display: flex;
+    justify-content: space-between;
+    margin-left: -10px;
+
+    @include mobile-pr {
+        flex-direction: column;
+        align-items: center;
+        margin-left: 0;
+      
+    }
+
+    .beer-slider {
+        margin-left: 10px;
+
+        @include mobile-pr {
+            margin-left: 0;
+            margin-top: 30px;
+        }
+    }
+}

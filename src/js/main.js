@@ -1,6 +1,7 @@
 import TimelineLite from 'gsap/TimelineLite'
 import ScrollToPlugin from 'gsap/ScrollToPlugin'
 import EasePack, { Power1, Elastic } from 'gsap/EasePack'
+import AttrPlugin from 'gsap/AttrPlugin'
 // import IScroll from 'iscroll/build/iscroll-probe';
 import animation from 'scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap'
 // import addIndicators from 'scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators'
@@ -11,6 +12,8 @@ import AddCart from './misc/addCart';
 // import HoverImg from './misc/hoverImg';
 import ContactForm from './misc/contactform'
 import Tingle from 'tingle.js'
+import BeerSlider from 'beerslider'
+
 // import Client from 'shopify-buy';
 // import './misc/isMobile';
 // import TweenLite from 'gsap/TweenLite';
@@ -123,6 +126,17 @@ function init () {
     overlay.addEventListener('click', mobileMenuHandler);
 
 
+    
+}
+
+
+
+
+// ==============================================
+// ==================== LOAD ====================
+// ==============================================
+
+function onLoad() {
     // ==================== SWIPER ====================
 
     if(page == 'home') {
@@ -222,7 +236,7 @@ function init () {
 
         // calculate full price
         let fullPriceContainer = document.getElementById('full-price');
-        function calcFullPrice() {
+        function calcFullPrice() { 
             let fullSum = 0;
             let currency = '';
 
@@ -266,15 +280,22 @@ function init () {
 
         if(orderBtn) {
             orderBtn.addEventListener('click', function(e){
-                e.preventDefault();
-                let formLink = 'https://thezense.com/cart/';
+                let target = e.target;
+                let link = target.getAttribute('href');
 
-                for(let product in cartList) {
-                    let stroke = product + ":" + cartList[product] + ",";
-                    formLink += stroke;
+                if(!link || link == '#') {
+
+                    e.preventDefault();
+                    let formLink = 'https://shop.thezense.com/cart/';
+    
+                    for(let product in cartList) {
+                        let stroke = product + ":" + cartList[product] + ",";
+                        formLink += stroke;
+                    }
+                    // console.log(formLink.slice(0,-1))
+                    window.open(formLink.slice(0, -1), '_blank');
                 }
-                // console.log(formLink.slice(0,-1))
-                window.open(formLink.slice(0, -1), '_blank');
+
             })
         }
     }
@@ -303,7 +324,7 @@ function init () {
                 if(products[product].videosrc) {
                     videoTriger.setAttribute('data-video-src', products[product].videosrc);
                 } else {
-                    videoTriger.parentElement.removeChild(videoTriger)
+                    videoTriger.parentElement.removeChild(videoTriger) 
                 }
                 // price
                 productItem.querySelector('[data-price]').innerHTML = products[product].currency + products[product].price;
@@ -357,7 +378,7 @@ function init () {
                         btn.classList.add('disable');
                 }
                 // set in list
-                productList.appendChild(productItem)
+                productList.appendChild(productItem)    
         }
         
             // add counters logic
@@ -371,10 +392,13 @@ function init () {
             } 
         
 
+        // add btns trigers (order now, continue shop)
+        let btns
+
         // add cart trigers 
             let addCartBtns = [].slice.call(document.querySelectorAll('[data-product-id]'));  
             let activeCartBtns = [];  
-            if(addCartBtns.length) { 
+            if(addCartBtns.length) {   
                 for(let i = 0; i < addCartBtns.length; ++i) {
                     let btn = new AddCart(addCartBtns[i]);       
                     activeCartBtns.push(btn);     
@@ -416,6 +440,7 @@ function init () {
             for(let i = 0; i < modalInfoTrigers.length; ++i) {
                 modalInfoTrigers[i].addEventListener('click', function(e){
                     let target = e.target;
+                    console.log(e.currentTarget)
 
                     if(target.classList.contains('modal-triger')) {
                         let videoContainer = document.getElementById('video-content');
@@ -428,7 +453,10 @@ function init () {
                         let infoW = e.currentTarget.querySelector('[data-ingrid-dscr]');
                         infoW.classList.add('opened');
                     } else if (target.classList.contains('info-dscr__close')) {
-                        e.target.parentElement.classList.remove('opened');
+                        target.parentElement.classList.remove('opened');
+                    } else if (target.classList.contains('continue')) {
+                        e.preventDefault();
+                        e.currentTarget.querySelector('.message').classList.remove('opened');
                     }
                 })
             }
@@ -476,16 +504,6 @@ function init () {
         }
     }
     window.orderLogic.updateOrderSum();
-}
-
-
-
-
-// ==============================================
-// ==================== LOAD ====================
-// ==============================================
-
-function onLoad() {
 
     // ==================== SCROLL MAGIC ====================
 
@@ -585,9 +603,12 @@ function onLoad() {
                     let pinnedImg = section3;
                     let pinnedImgCord = pinnedImg.getBoundingClientRect();
                     let x = pinnedImgCord.top + pageYOffset - (window.innerHeight/2 - pinnedImg.clientHeight/2);
+                    
                     return x;
                 }
-    
+
+                console.log(scrollLay.scrollHeight)
+                
                 return new ScrollMagic.Scene({
                     duration: scrollLay.scrollHeight * 2,
                     offset: getScrollOfset(),
@@ -596,6 +617,7 @@ function onLoad() {
                 })
                 .setTween(scrollTl)
                 .setPin(section3)
+                // .addIndicators() 
                 .addTo(controller);
             });
     
@@ -630,6 +652,28 @@ function onLoad() {
                 return new ScrollMagic.Scene({
                     triggerElement: sectionsList[i], 
                     duration: (wW < mobileLs) ? 0 : sectionsList[i].clientHeight / 2
+                })
+                .setTween(tween)
+                .addTo(controller);
+            });
+
+        }
+
+
+        // BA slider
+        let slidersList = [].slice.call(document.querySelectorAll('.beer-slider'));
+
+        for(let i = 0; i < slidersList.length; ++i) {
+            console.log(BeerSlider)
+            let sliderEl = new BeerSlider(slidersList[i], {start: 1});
+            scenes.push(function(){ 
+                let tween = new TimelineLite()
+                        .to(slidersList[i].querySelector('.beer-reveal'), 0.7, {width: '50%', ease: Back.easeOut.config(1.7)})
+                        .to(slidersList[i].querySelector('.beer-handle'), 0.7, {left: '50%', ease: Back.easeOut.config(1.7)}, 0)
+                        .to(slidersList[i].querySelector('.beer-range'), 0.7, {attr:{'aria-valuenow': 50, value: 50}, ease: Back.easeOut.config(1.7)}, 0)
+                return new ScrollMagic.Scene({
+                    triggerElement: slidersList[i],
+                    reverse: false
                 })
                 .setTween(tween)
                 .addTo(controller);
@@ -752,8 +796,8 @@ function onLoad() {
                     }
                 }); 
             }; 
-            document.addEventListener("mousewheel", doScrolling);
-            document.addEventListener("DOMMouseScroll", doScrolling);
+            document.addEventListener("mousewheel", doScrolling, {passive: false});
+            document.addEventListener("DOMMouseScroll", doScrolling, {passive: false});
             
             
             let isScrolling = false;
