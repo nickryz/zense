@@ -1,0 +1,215 @@
+﻿{
+  "products": {
+    "16042380951586": {
+      "title": "ACTIVATE Hair Growth Essence",
+      "isAvailable": true,
+      "dscr": [
+        "Pour your ACTIVATE Hair Growth Essence into your mixing bottle and add your favorite shampoo. Shake gently to mix well and massage into your hair gently every time you wash it.",
+        "This essence soothes irritated and inflamed scalps, strengthens roots, and increases circulation to help promote new growth. Rinse thoroughly and follow with your regular conditioner."
+      ],
+      "currency": "$",
+      "price": 60.00,
+      "videosrc": "",
+      "images": {
+        "sm": "img/shop/p1-sm.jpg",
+        "md": "img/shop/p1-md.jpg",
+        "lg": "img/shop/p1.jpg",
+        "default": "img/shop/p1.jpg",
+        "order": "img/orders/p1.jpg"
+      },
+      "faq": [ 
+        {
+          "quest": "I dye my hair/have treated hair. Can I still use Zense?",
+          "answer": [  
+            "Yes of course! While we all enjoy styling our hair, many treatments and artificial products can deeply damage our hair, causing it to frizz, break easily, and lose its natural shine. Some treatments, such as chemical perms and straighteners, are so strong they can also cause excess shedding, hair thinning, and even hair loss.",
+            "Zense’s products revitalize, deeply nourish, and strengthen your hair from root to tip, giving you back fuller, thicker, and glossier hair—no matter how you dye, style, or treat it."
+          ]
+        },
+        {
+          "quest": "I have sensitive skin. Will Zense work for me?",
+          "answer": [  
+            "Yes, you should still be able to use Zense without any reactions. However, if you have known allergies to any of our ingredients then we do not recommend you use Zense.",
+            "If you are unsure, we recommend you test the products first, as you would any other cosmetic or hair care product.",
+            "For ACTIVATE Hair Growth Essence: mix a couple of drops with take 1 teaspoon of your normal shampoo and dab this mixture on your wrist, or behind your knee. If you don’t get a reaction within 24 hours, then you can use Zense’s products normally.",
+            "For AMPLIFY Scalp Nourishing Serum: apply 2-3 drops to your wrist, or behind your knee and blend in. If you do not see a reaction within 24 hours, you can use it normally."
+          ]
+        },
+        {
+          "quest": "Are Zense’s products suitable for all hair types?",
+          "answer": [  
+            "Yes. Every single product in our range has been formulated to work with multiple hair types, from tightly curly tresses to naturally straight hair."
+          ]
+        },
+        {
+          "quest": "Can I use Zense every single day?",
+          "answer": [  
+            "Yes, Zense is meant to be used every single day so you can achieve wonderful results as soon as possible."
+          ]
+        },
+        {
+          "quest": "How long does each product last for?",
+          "answer": [  
+            "Each bottle contains enough product to last you for 30 days, with regular use (once per day)."
+          ]
+        },
+        {
+          "quest": "Are your products organic?",
+          "answer": [  
+            "Yes! Every single item in our product range is based on organic essences and extracts, and do not contain any harsh chemicals or “filler” ingredients."
+          ]
+        },
+        {
+          "quest": "Do you test on animals?",
+          "answer": [  
+            "Absolutely not! We are firmly against animal testing and all our products are 100% cruelty-free."
+          ]
+        }
+      ],
+      "ingredients": [
+        "Ginger extract",
+        "Ginseng extract",
+        "Fleeceflower Root extract",
+        "Grape Seed Oil",
+        "Rosemary Oil"
+      ]
+    },
+    "16083555680290": {
+      "title": "AMPLIFY Scalp Nourishing Serum",
+      "isAvailable": true,
+      "dscr": [
+        "After gently towel-drying your hair, use the dropper from your AMPLIFY Scalp Nourishing Serum to disperse 10-20 drops along your hairline, your natural part, and thinning or balding patches. Then, work it into your hair roots gently with your fingertips.",
+        "Your AMPLIFY Scalp Nourishing Serum works for a full 24 hours - stimulating your roots and follicles while nourishing them deeply for added strength and shine.",
+        "For advanced results, use in combination with your AMPLIFY+ Scalp Conditioning SPA."
+      ],
+      "videosrc": "",
+      "images": {
+        "sm": "img/shop/p2-sm.jpg",
+        "md": "img/shop/p2-md.jpg",
+        "lg": "img/shop/p2.jpg",
+        "default": "img/shop/p2.jpg",
+        "order": "img/orders/p2.jpg"
+      },
+      "currency": "$",
+      "price": 60.00,
+      "faq": [ 
+        {
+          "quest": "I dye my hair/have treated hair. Can I still use Zense?",
+          "answer": [  
+            "Yes of course! While we all enjoy styling our hair, many treatments and artificial products can deeply damage our hair, causing it to frizz, break easily, and lose its natural shine. Some treatments, such as chemical perms and straighteners, are so strong they can also cause excess shedding, hair thinning, and even hair loss.",
+            "Zense’s products revitalize, deeply nourish, and strengthen your hair from root to tip, giving you back fuller, thicker, and glossier hair—no matter how you dye, style, or treat it."
+          ]
+        },
+        {
+          "quest": "I have sensitive skin. Will Zense work for me?",
+          "answer": [  
+            "Yes, you should still be able to use Zense without any reactions. However, if you have known allergies to any of our ingredients then we do not recommend you use Zense.",
+            "If you are unsure, we recommend you test the products first, as you would any other cosmetic or hair care product.",
+            "For ACTIVATE Hair Growth Essence: mix a couple of drops with take 1 teaspoon of your normal shampoo and dab this mixture on your wrist, or behind your knee. If you don’t get a reaction within 24 hours, then you can use Zense’s products normally.",
+            "For AMPLIFY Scalp Nourishing Serum: apply 2-3 drops to your wrist, or behind your knee and blend in. If you do not see a reaction within 24 hours, you can use it normally."
+          ]
+        },
+        {
+          "quest": "Are Zense’s products suitable for all hair types?",
+          "answer": [  
+            "Yes. Every single product in our range has been formulated to work with multiple hair types, from tightly curly tresses to naturally straight hair."
+          ]
+        },
+        {
+          "quest": "Can I use Zense every single day?",
+          "answer": [  
+            "Yes, Zense is meant to be used every single day so you can achieve wonderful results as soon as possible."
+          ]
+        },
+        {
+          "quest": "How long does each product last for?",
+          "answer": [  
+            "Each bottle contains enough product to last you for 30 days, with regular use (once per day)."
+          ]
+        },
+        {
+          "quest": "Are your products organic?",
+          "answer": [  
+            "Yes! Every single item in our product range is based on organic essences and extracts, and do not contain any harsh chemicals or “filler” ingredients."
+          ]
+        },
+        {
+          "quest": "Do you test on animals?",
+          "answer": [  
+            "Absolutely not! We are firmly against animal testing and all our products are 100% cruelty-free."
+          ]
+        }
+      ],
+      "ingredients": [
+        "Fleeceflower Root extract",
+        "Arborvitae Leaf extract"
+      ]
+    },
+    "16083564232738": {
+      "title": "Amplify+ Scalp Conditioning SPA",
+      "isAvailable": true,
+      "dscr": [
+        "Using the dropper from your AMPLIFY Scalp Nourishing Serum, place 10-20 drops in the reservoir of your AMPLIFY+ Scalp Conditioning SPA comb and press the “Start” button. Comb your entire head softly for a few minutes until all serum has been dispersed. ",
+        "The combination of delicate infrared light and soothing vibrations encourages healthy cell and hair regeneration - for stronger, more luscious hair."
+      ],
+      "videosrc": "",
+      "images": {
+        "sm": "img/shop/p3-sm.jpg",
+        "md": "img/shop/p3-md.jpg",
+        "lg": "img/shop/p3.jpg",
+        "default": "img/shop/p3.jpg",
+        "order": "img/orders/p3.jpg"
+      },
+      "currency": "$",
+      "price": 135.00,
+      "faq": [ 
+        {
+          "quest": "I dye my hair/have treated hair. Can I still use Zense?",
+          "answer": [  
+            "Yes of course! While we all enjoy styling our hair, many treatments and artificial products can deeply damage our hair, causing it to frizz, break easily, and lose its natural shine. Some treatments, such as chemical perms and straighteners, are so strong they can also cause excess shedding, hair thinning, and even hair loss.",
+            "Zense’s products revitalize, deeply nourish, and strengthen your hair from root to tip, giving you back fuller, thicker, and glossier hair—no matter how you dye, style, or treat it."
+          ]
+        },
+        {
+          "quest": "I have sensitive skin. Will Zense work for me?",
+          "answer": [  
+            "Yes, you should still be able to use Zense without any reactions. However, if you have known allergies to any of our ingredients then we do not recommend you use Zense.",
+            "If you are unsure, we recommend you test the products first, as you would any other cosmetic or hair care product.",
+            "For ACTIVATE Hair Growth Essence: mix a couple of drops with 1 teaspoon of your normal shampoo and dab this mixture on your wrist, or behind your knee. If you don’t get a reaction within 24 hours, then you can use Zense’s products normally.",
+            "For AMPLIFY Scalp Nourishing Serum: apply 2-3 drops to your wrist, or behind your knee and blend in. If you do not see a reaction within 24 hours, you can use it normally."
+          ]
+        },
+        {
+          "quest": "Are Zense’s products suitable for all hair types?",
+          "answer": [  
+            "Yes. Every single product in our range has been formulated to work with multiple hair types, from tightly curly tresses to naturally straight hair."
+          ]
+        },
+        {
+          "quest": "Can I use Zense every single day?",
+          "answer": [  
+            "Yes, Zense is meant to be used every single day so you can achieve wonderful results as soon as possible."
+          ]
+        },
+        {
+          "quest": "How long does each product last for?",
+          "answer": [  
+            "Each bottle contains enough product to last you for 30 days, with regular use (once per day)."
+          ]
+        },
+        {
+          "quest": "Are your products organic?",
+          "answer": [  
+            "Yes! Every single item in our product range is based on organic essences and extracts, and do not contain any harsh chemicals or “filler” ingredients."
+          ]
+        },
+        {
+          "quest": "Do you test on animals?",
+          "answer": [  
+            "Absolutely not! We are firmly against animal testing and all our products are 100% cruelty-free."
+          ]
+        }
+      ],
+      "ingredients": ""
+    }
+  }
+}
